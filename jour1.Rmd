@@ -1,0 +1,245 @@
+---
+title: "Introduction à R"
+author: Open Data France et datactivi.st
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+    incremental: true
+---
+
+## Introduction à R, le couteau suisse de la data science 
+
+
+<p></p>
+<p></p><p></p><p>
+Joël Gombin et Samuel Goëta (datactivi.st)
+</p>
+<p>
+Retrouvez les matériaux sur : [www.github.com/datactivist/IntroR_ODF](www.github.com/datactivist/IntroR_ODF)
+</p>
+
+<p>
+Pad collaboratif : https://frama.link/formationR_pad1
+</p>
+
+## Faisons connaissance
+
+https://frama.link/formationR
+
+
+# Données, données...
+
+## Tentative de définition de la donnée
+
+- c'est quoi une donnée pour vous ? 
+- ambiguïté de la notion de donnée
+- datum/data
+- pas de condition de véracité (Rosenberg, 2013)
+- data / information / knowledge
+
+## Open data, big data, linked data...
+
+<iframe src="http://giphy.com/embed/TnuKaZxbMbHhK" width="480" height="319" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/TnuKaZxbMbHhK">via GIPHY</a></p>
+
+# Pourquoi s'intéresser à l'analyse des données ?
+
+## Ça nous concerne :
+
+professionnellement (open data, big data, analytics, gestion, KPIs, BI, données métier...)
+
+
+
+## Ça nous concerne :
+
+personnellement ([self data](http://mesinfos.fing.org/))
+
+```{r, echo = FALSE, out.height='90%', fig.align='center'}
+knitr::include_graphics("./img/image_domaine_usages.png")
+```
+
+
+
+## Ça nous concerne :
+
+en tant que citoyen
+
+## Pourquoi s'intéresser à l'analyse des données ?
+
+Les données ne signifient rien à l'état brut. C'est un *modèle* qui permet de les interpréter, leur donner sens.
+
+Pas de modèle EST un modèle (implicite)
+
+Il faut donc expliciter nos modèles
+
+## Pourquoi s'intéresser à l'analyse des données ?
+
+S'initier à l'analyse des données, c'est :
+
+- apprendre à expliciter ses modèles
+- formuler les hypothèses sous-jacentes
+- les tester
+- _in fine_, appréhender ses données de manière moins naïve
+
+## Pourquoi s'intéresser à l'analyse des données ?
+
+La data aujourd'hui, c'est le far west 
+
+<iframe src="http://giphy.com/embed/J14dxhoJLWlI4" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/J14dxhoJLWlI4">via GIPHY</a></p>
+
+## Pourquoi s'intéresser à l'analyse des données ?
+
+Intéressez vous aux données avant que les données ne s'intéressent à vous
+
+"Data literacy"
+
+# Et vous, pourquoi ça vous intéresse ?
+
+# L'écosystème des données
+
+## Quels outils utilisez-vous ? Connaissez-vous ? 
+
+## Les formats de données
+
+<iframe src="http://giphy.com/embed/jEEYJO9EgU5ig" width="480" height="265" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/jEEYJO9EgU5ig">via GIPHY</a></p>
+
+## Les formats de données
+
+- tabulaires (voir `rio`)
+  + Excel / tableurs (.xls, .xlsx, .ods...)
+  + CSV, TSV, CSVY, PSV, FWF
+  + DataPackages
+  + feather
+  + ...
+
+## Les formats de données
+
+- propriétaires logiciels stats
+  + .dta
+  + .sav, .por
+  + .dbf
+  + .sas7bdat, .xpt
+  + ...
+
+## Les formats de données
+
+  
+- plus exotiques
+ + XML
+ + HTML
+ + JSON
+ + YAML
+ + ...
+
+## Les formats de données
+ 
+- formats spécialisés : l'exemple des données spatiales (voir `rgdal`: 132 formats !)
+  + shapefile 
+  + geojson
+  + topojson
+  + kml
+  + mapinfo
+  + formats raster
+  + tiles
+  + ...
+
+## Les bases de données
+
+- relationnelles / SQL
+  + MySQL
+  + SQLite 
+  + PostgreSQL
+  + ...
+  
+## Les bases de données
+
+- SQL orientées colonnes
+  + MonetDB / MonetDBLite
+  + ...
+  
+## Les bases de données
+
+- NoSQL
+  + MangoDB
+  + Cassandra
+  + CouchDB
+  + SimpleDB
+  + BigTable
+  + HBase
+  + Neo4J
+  + Redis
+  + ...
+  
+## Les outils
+
+- Celui que vous avez sûrement déjà utilisé : Excel / LibreOffice / un tableur
+  + avantages
+  + inconvénients
+
+- GUI
+  + Sphinx
+  + SPSS
+  + SAS
+  + OpenRefine
+  + WTF CSV
+  + Tableau
+  + ...
+
+## Les outils
+  
+- CLI
+  + Python
+  + Julia
+  + R 
+  + C/C++
+  + Java
+  + Javascript
+  + outils bash
+  + ...
+  
+## Les outils
+
+- sans compter les outils spécialisés. Exemple de la cartographe :
+  + QGIS
+  + PhilCarto
+  + MapInfo
+  + ArcGIS
+  + Umap
+  + leaflet
+  + ....
+
+## Les infrastructures
+
+- Notamment dans le "big data" :
+  + Hadoop
+  + Spark
+  + H20
+  + etc. etc. 
+
+
+## One tool to rule them all
+
+- R a comme avantage d'être un langage de programmation (= potentiel illimité) pensé exprès pour la manipulation des données
+- au fil du temps, devenu un "general purpose tool"
+- permet d'interfacer de nombreux outils plus spécialisés
+- une communauté très dynamique 
+- une syntaxe de plus en plus facile
+- des progrès vers des bouts de GUI
+
+# C'est quoi tes données ?
+
+## Sur quelles données voulez-vous travailler ?
+
+- domaine
+- format
+- taille (lignes / variables)
+- granularité
+- fraicheur
+- quelle analyse
+- etc.
+
+
+## Installation de R et Rstudio
+

@@ -1,0 +1,73 @@
+---
+title: "Qui sont les stagiaires de la formation R ?"
+output: 
+  flexdashboard::flex_dashboard:
+    orientation: columns
+---
+
+
+```{r acquire_data}
+if (!require("pacman")) install.packages("pacman")
+pacman::p_load("googlesheets",
+               "dplyr",
+               "flexdashboard",
+               "ggplot2",
+               "ggmap",
+               "sp")
+
+# lecture des réponses
+
+answers <- gs_url("https://docs.google.com/spreadsheets/d/1rS5h30nqhk0GS3WLUxBD0jY0u3-Qzm7YC8IpflcAptU/edit?usp=sharing")
+
+df <- answers %>% 
+  gs_read()
+
+```
+
+
+
+Column
+-----------------------------------------------------------------------
+
+### Nombre de répondants {.value-box}
+
+```{r}
+valueBox(nrow(df), icon = "ion-person-stalker")
+
+```
+
+
+### Sexe
+
+```{r}
+
+taux <- sum(df$`Vous êtes` == "Une femme", na.rm = TRUE) / nrow(df) * 100
+gauge(round(taux), 0, 100, symbol = "%", sectors = gaugeSectors(success = c(50,100), warning = c(0, 49)))
+
+```
+
+### Âge
+
+```{r}
+ggplot(df, aes(x = `Vous avez :`)) +
+  geom_bar() +
+  ylab("") +
+  theme_bw()
+
+```
+
+Column
+-----------------------------------------------------------
+
+### Ville 
+
+```{r}
+df$adresse <- df$`Indiquez votre ville de provenance`
+coord <- geocode(paste0(df$`Indiquez votre ville de provenance`, ", France"))
+coordinates(coord) <- c("lon","lat")
+coord@proj4string <- CRS("+proj=longlat +ellps=WGS84 +datum=WGS84")
+
+mapview::mapview(coord)@map
+
+```
+
