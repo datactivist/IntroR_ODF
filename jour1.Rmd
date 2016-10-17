@@ -85,6 +85,12 @@ S'initier à l'analyse des données, c'est :
 
 ## Pourquoi s'intéresser à l'analyse des données ?
 
+```{r, echo = FALSE, out.width='90%', fig.align='center'}
+knitr::include_graphics("./img/data-science-model.png")
+```
+
+## Pourquoi s'intéresser à l'analyse des données ?
+
 La data aujourd'hui, c'est le far west 
 
 <iframe src="http://giphy.com/embed/J14dxhoJLWlI4" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/J14dxhoJLWlI4">via GIPHY</a></p>
@@ -242,4 +248,6 @@ Intéressez vous aux données avant que les données ne s'intéressent à vous
 
 
 ## Installation de R et Rstudio
+
+## Prise en main du logiciel
 
