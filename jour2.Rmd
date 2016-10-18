@@ -1,0 +1,114 @@
+---
+title: "Introduction à R"
+author: Open Data France et datactivi.st
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+    incremental: true
+---
+
+## Introduction à R, le couteau suisse de la data science 
+
+<p></p>
+<p></p>
+Jour 2
+<p></p><p></p><p>
+Joël Gombin et Samuel Goëta (datactivi.st)
+</p>
+<p>
+Retrouvez les matériaux sur : [www.github.com/datactivist/IntroR_ODF](www.github.com/datactivist/IntroR_ODF)
+</p>
+
+<p>
+Pad collaboratif : https://frama.link/formationR_pad2
+</p>
+
+# Installation de R et Rstudio
+
+## Installation de R et Rstudio
+
+- http://www.r-project.org / http://cran.univ-paris1.fr/
+- https://www.rstudio.com/products/rstudio/download / https://www.rstudio.com/products/rstudio/download/preview
+
+- (Usagers MacOS X : si difficulté à installer XCode => https://github.com/kennethreitz/osx-gcc-installer)
+
+- installer le `tidyverse` : `install.packages("tidyverse")`
+
+## Prise en main de Rstudio
+
+- interface utilisateur
+- notion de projets
+
+## Trouver de l'aide avec R / Rstudio
+
+- `?help`
+- autocomplete
+- google => stackoverflow / blogs / github / twitter ([#Rstats](https://twitter.com/search?vertical=default&q=%23rstats&src=typd)) / etc.
+- ressources en ligne. Notamment : [r4ds](http://r4ds.had.co.nz/), [adv-r](http://adv-r.had.co.nz/), [R in action](https://www.manning.com/books/r-in-action-second-edition), [Intro à R](https://github.com/juba/intro-r), [analyse-R](http://larmarange.github.io/analyse-R/)...
+- listes de diffusion et forums francophones : semin-r@mnhn.fr, fltaur@yahoogroupes.fr, r-soc@groupes.renater.fr, http://forums.cirad.fr/logiciel-R/...
+- [meetups R](http://www.meetup.com/fr-FR/rparis/)... 
+
+# Scripter, documenter, répliquer
+
+## Mon premier script R
+
+## Mon premier notebook R
+
+## Mon premier document Rmarkdown 
+
+# Importer des données 
+
+## En GUI ou en CLI
+
+- bouton "Import dataset"
+- en CLI : package `readr` pour le CSV, `haven` pour SPSS / SAS / Stata, `readxl` pour le XLS(X), `rio` pour (presque) tout le reste
+
+## Importez votre premier jeu de données !
+
+- chargement de package : `library(readr)`
+- Attention à l'assignation : `monjeudedonnees <- read_csv` 
+- Un exemple : [les aides perçues au titre de la PAC](https://www.data.gouv.fr/fr/datasets/aides-percues-par-les-personnes-morales-au-titre-de-la-politique-agricole-commune/)
+
+## La notion de fonction
+
+```{r}
+sum(1, 2, 3)
+
+a <- sum(1, 2, 3)
+
+a
+```
+
+
+
+# Le tidyverse 
+
+## La notion de tidy data
+
+> “Happy families are all alike; every unhappy family is unhappy in its own way.” – Leo Tolstoy
+
+> “Tidy datasets are all alike, but every messy dataset is messy in its own way.” – Hadley Wickham
+
+- À chaque variable sa propre colonne
+- À chaque observation sa propre ligne
+- À chaque valeur sa propre cellule
+
+## La notion de tidy data
+
+```{r, echo = FALSE, out.width='90%', fig.align='center'}
+knitr::include_graphics("./img/tidy-1.png")
+```
+
+## La notion de tidy data
+
+- Mettre chaque jeu de données dans un `tibble`
+- Mettre chaque variable dans une colonne 
+
+## Un exemple de untidy data
+
+https://www.data.gouv.fr/fr/datasets/election-presidentielle-2012-resultats-572126/
+
+## Nettoyage et préparation de ce jeu de données
