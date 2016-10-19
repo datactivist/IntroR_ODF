@@ -148,3 +148,16 @@ df <- df %>%
 # on se débarasse des variables devenues inutiles
 df <- df %>% 
   select(-`Code du département`, -`Code de la commune`)
+
+##### pivoter large/long et vice-versa
+
+# large vers long
+
+df_long <- df %>% 
+  gather(Candidat, Voix, JOLY:HOLLANDE)
+  
+
+# long vers large
+
+df_large <- df_long %>% 
+  spread(Candidat, Voix)

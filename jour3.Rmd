@@ -1,0 +1,132 @@
+---
+title: "Introduction à R"
+author: Open Data France et datactivi.st
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+    incremental: true
+---
+
+## Introduction à R, le couteau suisse de la data science 
+
+
+<p></p>
+<p></p>
+Jour 3
+<p></p><p></p><p>
+Joël Gombin et Samuel Goëta (datactivi.st)
+</p>
+<p>
+Retrouvez les matériaux sur : [www.github.com/datactivist/IntroR_ODF](www.github.com/datactivist/IntroR_ODF)
+</p>
+
+<p>
+Pad collaboratif : https://frama.link/formationR_pad3
+</p>
+
+## Ce qu'on a déjà appris 
+
+- l'écosystème dans lequel s'inscrit R
+- importer des données
+- préparer des *tidy data*
+- commencer à transformer les données
+
+## Ce qu'on a déjà appris 
+
+```{r, echo = FALSE, out.width='90%', fig.align='center'}
+knitr::include_graphics("./img/data-science-model.png")
+```
+
+## Objectifs de la journée
+
+- être autonome sur l'import (`read_*`), le nettoyage et la transformation (`mutate`) des données 
+- savoir pivoter (`gather` et `spread`), filtrer (`filter`) et agréger (`group_by` + `summarise`) des données
+- savoir fusionner (`join`) deux jeux de données
+- obtenir une première visualisation de ses données (`ggplot2`)
+
+# Consolidation des acquis de la journée d'hier
+
+## Exercice
+
+- sélectionner un jeu de données (par exemple https://frama.link/reserve)
+- s'assurer que le jeu de données est "tidy"
+- transformer le jeu de données comme nécessaire pour exploitation
+
+# Pivoter (`gather` et `spread`)
+
+## Le problème 
+
+```{r, echo = FALSE, out.width='90%', fig.align='center'}
+knitr::include_graphics("./img/tidy-9.png")
+```
+
+## Le problème 
+
+Utile parce que :
+
+- format demandé par telle fonction/logiciel...
+- (ré)agrégation de données
+- nettoyage de données
+- etc. etc.
+
+## Pivoter un jeu de données 
+
+- Reprendre le jeu de données "présidentielle" d'hier
+- si on veut le jeu de données au format "long" ?
+- large vers long => `gather`
+- long vers large => `spread`
+
+# Filtrer (`filter`)
+
+## Le problème 
+
+Utile pour :
+
+- ne sélectionner que certains cas
+- enlever des cas non pertinents
+- travailler sur un sous-ensemble (spatial, temporel...) du jeu de données 
+
+## Filtrer un jeu de données 
+
+- Reprendre le jeu de données "présidentielle" d'hier
+- ne conserver que les communes d'Ile-de-France (ou de votre région !)
+- ne conserver que les communes dans lesquelles Le Pen obtient plus de 20 % des inscrits
+- etc.
+
+# Agréger (`group_by` + `summarise`)
+
+## Le problème
+
+- On veut regrouper des observations par un ou plusieurs critères 
+
+## Agréger un jeu de données
+
+- Reprendre le jeu de données "présidentielle" d'hier
+- Calculer les résultats par département
+- Calculer les résultats par zones d'emploi !
+
+# Fusionner (`left_join`)
+
+## Le problème
+
+On veut rapprocher des données issues de deux tables différentes
+
+## Fusionner deux jeux de données
+
+- Reprendre le jeu de données "présidentielle" d'hier
+- Y adjoindre le code de la zone d'emploi de chaque commune (source : http://www.insee.fr/fr/methodes/default.asp?page=zonages/zones_emploi.htm) : https://frama.link/ze_csv
+
+# Visualiser (`ggplot2`)
+
+## Le problème 
+
+Avoir des données, c'est bien, les voir, c'est mieux !
+
+## Visualiser des données
+
+- Distribution de l'abstention
+- Distribution du vote Le Pen
+- Corrélation entre les deux ?
