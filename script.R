@@ -1,26 +1,3 @@
-# ceci est mon premier  script R
-
-library(tidyverse)
-library(rio)
-
-monjeudedonnees <- import("http://www.ideeslibres.org/opendata/elus_municipaux_2008-2014/prenoms.csv", setclass = "tbl_df")
-
-# monjeudedonnees <- read_csv2("http://www.ideeslibres.org/opendata/elus_municipaux_2008-2014/prenoms.csv", 
-#                              col_types = cols(
-#   prenom = col_character(),
-#   genre = col_character(),
-#   nb = col_integer()
-# ))
-
-monjeudedonnees
-
-save(monjeudedonnees, file = "./monjeudedonnees.Rdata")
-
-##### 
-
-load("./monjeudedonnees.Rdata")
-######################################
-
 # on veut transformer un messy data, le résultat du premier tour de l'élection présidentielle de 2012, en tidy data
 # Source : https://www.data.gouv.fr/fr/datasets/election-presidentielle-2012-resultats-572126/
 
