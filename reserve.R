@@ -31,3 +31,10 @@ reserve <- read_csv2("./reserve-assemblee-2013.csv",
             API_NOSDEPUTES = col_character(),
             NB_MANDATS = col_integer()
           ))
+
+library(stringr)
+
+reserve <- reserve %>% 
+  # création d'un code circo sur deux caractères
+  mutate(CodeCirco = str_pad(NUMERO_CIRCONSCRIPTION, 2, "left", "0")) %>% 
+  mutate(CodeCirco = paste(ID_DEPARTEMENT, CodeCirco, sep = "-")) # concaténation
