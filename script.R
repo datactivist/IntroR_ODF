@@ -1,5 +1,6 @@
 # on veut transformer un messy data, le résultat du premier tour de l'élection présidentielle de 2012, en tidy data
 # Source : https://www.data.gouv.fr/fr/datasets/election-presidentielle-2012-resultats-572126/
+library(tidyverse)
 
 P2012T1 <- read_csv2("./presidentielle2012T1.csv", 
                      col_types = cols(
