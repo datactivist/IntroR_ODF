@@ -31,6 +31,7 @@ opts_knit$set(width=75)
 - Toute la documentation de la formation : www.github.com/datactivist/introR_ODF
 
 Pour le formateur : 
+
 - préparer les démo
 
 # Les étapes de la formation : 
@@ -42,6 +43,6 @@ Ce formulaire sert de démonstration des usages potentiels de R.
 
 Comment connecter un simple formulaire Google Form, ses données récoltées dans un tableur et les visualiser très simplement avec des petits modules de graphes ou de cartes sur une page HTML construite automatiquement. 
 
-Le formateur a créé préalablement un code R qui permet de visualiser en temps réel un dashboard qui présente les résultats. 
+Le formateur a créé préalablement [un code R](./dashboard.Rmd) qui permet de visualiser en temps réel [un dashboard](./dashboard.html) qui présente les résultats. 
 
-Force de R : code simple et réduit (70 lignes), permet un traitement. Il faut une heure à 1,5 heure pour l'écrire.
+La force de R, c'est de permettre d'utiliser un code simple et concis (70 lignes dans ce cas). Il faut une heure à une heure et demi pour l'écrire.
