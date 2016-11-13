@@ -132,9 +132,107 @@ df <- df %>%
 
 df_long <- df %>% 
   gather(Candidat, Voix, JOLY:HOLLANDE)
-  
+
+df_long %>% 
+  group_by(CodeInsee) %>%  #les opérations qui suivent sont par commune
+  arrange(-Voix) %>% #on trie par ordre décroissant du nombre de voix dans chaque commune
+  slice(1:2) %>% #on ne garde que les deux premières lignes
+  ungroup %>% #le reste se fait sur l'ensemble de la table
+  arrange(-Inscrits) %>% 
+  #tri sur l'ensemble des inscrits 
+  mutate(pourcent_ins = Voix / Inscrits * 100)
 
 # long vers large
 
 df_large <- df_long %>% 
   spread(Candidat, Voix)
+
+# calculer le % des inscrits
+
+df_long <- df_long %>% 
+  mutate(pourcent.ins = Voix / Inscrits * 100)
+
+
+# on s'amuse à aller et venir entre formats long et large, et à séparer et réunifier des colonnes 
+df_long %>% 
+  gather(type, valeur, Voix, pourcent.ins) %>%
+  unite(Candidat, Candidat, type, sep = "_") %>% 
+  spread(Candidat, valeur) %>% 
+  gather(Candidat, Voix, ARTHAUD_pourcent.ins:SARKOZY_Voix) %>% 
+  separate(Candidat, c("Nom", "type"), sep = "_")
+
+
+df_idf <- df_long %>% 
+  # ne garder que les lignes des départements d'Ile-de-France
+  # %in% est un opérateur 
+  filter(CodeDpt %in% c("75", "77", "78", "91", "92", "93", "94", "95"))
+
+df_hollande <- df_long %>% 
+  filter(Candidat %in% "HOLLANDE")
+
+df_hollande %>% 
+  arrange(desc(pourcent.ins))
+
+# sélectionner les communes dans lesquelles Le Pen obtient plus de 20 % des inscrits, tout en conservant les résultats des autres candidats
+
+df_lepenistes <- df_large %>% 
+  mutate(LePen_ins = `LE PEN` / Inscrits * 100) %>% 
+  filter(LePen_ins > 20)
+
+df_large %>% 
+  mutate_at(vars(ARTHAUD:SARKOZY), funs(. / Inscrits * 100))
+
+# agrégation par département
+
+df_large %>% 
+  group_by(CodeDpt) %>% 
+  summarise(Inscrits = sum(Inscrits))
+
+df_large %>% 
+  group_by(CodeDpt) %>% 
+  summarise_at(vars(Inscrits, Exprimés, Votants, ARTHAUD:SARKOZY), funs(sum(.)))
+
+
+## agrégation
+
+ze <- read_csv2("https://frama.link/ze_csv")
+
+df_large <- left_join(df_large, ze, by = c("CodeInsee" = "CODGEO"))
+
+df_ze_lepen <- df_large %>% 
+  group_by(LIBZE2010) %>% 
+  summarise_at(vars(Inscrits, Exprimés, Votants, ARTHAUD:SARKOZY), funs(sum(.))) %>% 
+  mutate(LePen_ins = `LE PEN` / Inscrits * 100) %>% 
+  arrange(desc(LePen_ins))
+
+write_excel_csv(df_ze_lepen, path = "./resultats_ze.csv", na = "")
+
+
+df_large %>% 
+  mutate(Abstention_ins = (Inscrits-Votants) / Inscrits * 100) %>% 
+  ggplot(aes(x = Abstention_ins)) +
+  geom_density() +
+  theme_bw()
+
+df_large %>% 
+  mutate(Abstention_ins = (Inscrits - Votants) / Inscrits * 100) %>% 
+  ggplot(aes(x = Abstention_ins)) +
+  geom_histogram() +
+  theme_bw()
+
+df_large %>% 
+  mutate(Abstention_ins = (Inscrits - Votants) / Inscrits * 100,
+         LePen_exp = (`LE PEN` / Exprimés * 100)) %>% 
+  ggplot(aes(x = Abstention_ins,
+             y = LePen_exp)) +
+  geom_point(alpha = 0.1)
+
+pdf("./monimage.pdf")
+df_large %>% 
+  mutate(Abstention_ins = (Inscrits - Votants) / Inscrits * 100,
+         LePen_exp = (`LE PEN` / Exprimés * 100)) %>% 
+  ggplot(aes(x = Abstention_ins,
+             y = LePen_exp)) +
+  geom_point(alpha = 0.1) +
+  geom_smooth()
+dev.off()
