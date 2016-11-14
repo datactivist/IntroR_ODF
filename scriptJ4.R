@@ -176,3 +176,48 @@ reserve %>%
 reserve %>% 
   filter(is.na(GROUPE_SIGLE)) %>% 
   distinct(NOM_BENEFICIAIRE)
+
+# paramètre alpha
+
+reserve %>% 
+  ggplot(aes(x = DATE_NAISSANCE_DEPUTE, y = MONTANT_SUBVENTION)) +
+  geom_point(alpha = 0.2) +
+  scale_y_log10() +
+  theme_bw()
+
+# représenter la densité des points
+
+reserve %>% 
+  ggplot(aes(x = DATE_NAISSANCE_DEPUTE, y = MONTANT_SUBVENTION)) +
+  geom_hex() +
+  scale_y_log10() +
+  scale_fill_continuous(low = "white", high = "dark green") +
+  theme_bw() 
+
+# croiser trois variables
+reserve %>% 
+  ggplot(aes(x = DATE_NAISSANCE_DEPUTE, y = MONTANT_SUBVENTION)) +
+  geom_point(aes(colour = GROUPE_SIGLE), alpha = 0.8) +
+  scale_y_log10() +
+  theme_bw()
+
+# geom_density
+reserve %>% 
+  ggplot(aes(x = MONTANT_SUBVENTION)) +
+  geom_density() +
+  scale_x_log10(labels =  scales::comma) 
+
+# geom_smooth
+reserve %>% 
+  ggplot(aes(x = DATE_NAISSANCE_DEPUTE, y = MONTANT_SUBVENTION)) +
+  geom_point(alpha = 0.2) +
+  geom_smooth() +
+  scale_y_log10() +
+  theme_bw()
+
+reserve %>% 
+  ggplot(aes(x = DATE_NAISSANCE_DEPUTE, y = MONTANT_SUBVENTION)) +
+  geom_point(alpha = 0.2) +
+  geom_smooth(method = "lm") +
+  scale_y_log10() +
+  theme_bw()
