@@ -221,3 +221,7 @@ reserve %>%
   geom_smooth(method = "lm") +
   scale_y_log10() +
   theme_bw()
+
+reserve %>% 
+  ggplot(aes(x = GROUPE_SIGLE, y = MONTANT_SUBVENTION)) +
+  geom_boxplot()

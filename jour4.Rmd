@@ -103,6 +103,7 @@ knitr::include_graphics("./img/data-science-model.png")
 - `x`
 - `y`
 - `colour`
+- `fill`
 - `size`
 - line width `lwd`
 - line type `lty`
