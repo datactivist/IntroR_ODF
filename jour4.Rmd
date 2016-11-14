@@ -1,0 +1,109 @@
+---
+title: "Introduction à R"
+author: Open Data France et datactivi.st
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false
+    katex: true
+    theme: ribbon
+    incremental: true
+---
+
+## Introduction à R, le couteau suisse de la data science 
+
+
+<p></p>
+<p></p>
+Jour 4
+<p></p><p></p><p>
+Joël Gombin et Samuel Goëta (datactivi.st)
+</p>
+<p>
+Retrouvez les matériaux sur : [www.github.com/datactivist/IntroR_ODF](www.github.com/datactivist/IntroR_ODF)
+</p>
+
+<p>
+Pad collaboratif : https://frama.link/formationR_pad4
+</p>
+
+## Ce qu'on a déjà appris 
+
+- l'écosystème dans lequel s'inscrit R
+- importer des données
+- préparer des *tidy data*
+- transformer les données
+- fusionner des jeux de données
+- agréger un jeu de données
+
+## Ce qu'on a déjà appris 
+
+```{r, echo = FALSE, out.width='90%', fig.align='center'}
+knitr::include_graphics("./img/data-science-model.png")
+```
+
+## Objectifs de la journée
+
+- acquérir quelques principes de dataviz (Tufte, Wilkinson, Few…)
+- avoir une vision d'ensemble des systèmes graphiques dans R
+- se familiariser avec ggplot2 et la grammaire des graphiques
+- Aller plus loin avec ggplot2 (petits multiples, visualisation de modèles, composition de dataviz complexes…)
+
+# Consolidation des acquis de la session précédente
+
+## Exercice
+
+- sélectionner un jeu de données 
+- s'assurer que le jeu de données est "tidy"
+- transformer le jeu de données comme nécessaire pour exploitation : recodage, transformation des variables, agrégation...
+
+# Le panorama des systèmes graphiques de R
+
+## Le panorama des systèmes graphiques de R
+
+- base graphics : mélange bas niveau/haut niveau, complexe, pas très cohérent, mais rapide et puissant
+- lattice : haut niveau, a une grammaire, plus très utilisé
+- ggplot2 : haut niveau, grammaire cohérente, très puissant, très largement utilisé et [imité](http://ggplot.yhathq.com/) 
+
+# Notre outil à tout faire : ggplot2
+
+## La notion de grammaire de visualisation
+
+- données
+- correspondances esthétiques (`aes`thetic mapping)
+- couches (`layer`) : `geom` et `stat`
+- échelles (`scale`)
+- un système de coordonnées (`coord`)
+- petits multiples (`facet`)
+- un thème (`theme`)
+
+## Un premier exemple simple
+
+- choisir un jeu de données
+- faire des graphiques descriptifs (univariés)
+- faire des graphiques bivariés
+- changer les `aes`
+- changer les `geom`
+- changer les `theme`
+
+## Les principaux `geom`
+
+- `geom_point`
+- `geom_line`
+- `geom_text`
+- `geom_quantile`
+- `geom_histogram`
+- `geom_density`
+- `geom_smooth`
+- `geom_bar`
+- et même `geom_map`
+
+## Les principaux `aes`thetics
+
+- `x`
+- `y`
+- `colour`
+- `size`
+- line width `lwd`
+- line type `lty`
+
