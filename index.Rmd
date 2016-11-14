@@ -967,7 +967,7 @@ Dans ce cas, format long : les dates peuvent être spécifiées comme telles. Fo
 
 ## Cas des bureaux de votes à Paris
 
-Format long : un résultat sur un PV de bureau de votes, on peut le retravailler et agréger des lignes pour repasser en tableau large. Tableaux longs sont difficillement lisibles par l'usager lambda.
+Format long : [un résultat sur un PV de bureau de votes](https://opendata.paris.fr/explore/dataset/resultats_electoraux/?disjunctive.libelle_du_scrutin), on peut le retravailler et agréger des lignes pour repasser en tableau large. Tableaux longs sont difficillement lisibles par l'usager lambda.
 Ce qui est considéré comme du tidy data dépend de la définition de ce qui est une observation et une variable : ça peut dépendre des usages.
 
 Pour le producteur de données, format long privilégie les usagers techniques (dév). Format large privilégie les utilisateurs grand public, directement intelligible, plus facile de répérer l'information (pas besoin de faire des tris dans le tableur). Ouverture données brutes : penser d'abord à l'usage interne. 
