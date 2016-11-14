@@ -118,3 +118,16 @@ reserve %>%
   geom_bar(aes(fill = GROUPE_SIGLE), stat = "count") +
   theme_bw() +
   scale_groupes
+
+
+# exporter un graphique
+
+pdf(file = "./mongraphique.pdf", width = 10, height = 10)
+
+reserve %>% 
+  ggplot(aes(x = GROUPE_SIGLE)) +
+  geom_bar(aes(fill = GROUPE_SIGLE), stat = "count") +
+  theme_bw() +
+  scale_groupes
+
+dev.off()
