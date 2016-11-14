@@ -59,6 +59,18 @@ $(document).ready(function () {
       <li><a href="#les-materiaux-necessaires-pour-cette-formation">Les matériaux nécessaires pour cette formation</a></li>
       <li><a href="#les-etapes-de-la-formation">Les étapes de la formation :</a><ul>
       <li><a href="#premiere-demo">Première démo :</a></li>
+      <li><a href="#la-donnee">La donnée ?</a></li>
+      <li><a href="#quest-ce-que-lopen-data">Qu’est ce que l’open data ?</a></li>
+      <li><a href="#quest-ce-que-le-big-data">Qu’est ce que le big data ?</a></li>
+      <li><a href="#quest-ce-que-le-linked-data">Qu’est ce que le linked data ?</a></li>
+      <li><a href="#pourquoi-sinteresser-a-lanalyse-des-donnees">Pourquoi s’intéresser à l’analyse des données ?</a></li>
+      <li><a href="#et-vous-pourquoi-ca-vous-interesse">Et vous pourquoi ça vous intéresse ?</a></li>
+      <li><a href="#lecosysteme-des-donnees">L’écosystème des données</a></li>
+      <li><a href="#les-outils">Les outils</a></li>
+      <li><a href="#les-infrastructures">Les infrastructures</a></li>
+      <li><a href="#one-tool-to-rule-them-all">One tool to rule them all</a></li>
+      <li><a href="#cest-quoi-tes-donnees">C’est quoi tes données?</a></li>
+      <li><a href="#installation-de-r">Installation de R</a></li>
       </ul></li>
       </ul>
     </div>
@@ -85,6 +97,263 @@ $(document).ready(function () {
 <p>Comment connecter un simple formulaire Google Form, ses données récoltées dans un tableur et les visualiser très simplement avec des petits modules de graphes ou de cartes sur une page HTML construite automatiquement.</p>
 <p>Le formateur a créé préalablement <a href="./dashboard.Rmd">un code R</a> qui permet de visualiser en temps réel <a href="./dashboard.html">un dashboard</a> qui présente les résultats.</p>
 <p>La force de R, c’est de permettre d’utiliser un code simple et concis (70 lignes dans ce cas). Il faut une heure à une heure et demi pour l’écrire.</p>
+</div>
+<div id="la-donnee" class="section level2">
+<h2>La donnée ?</h2>
+<p>Selon vous, qu’est ce qu’une donnée ?</p>
+<ul>
+<li>Quantification</li>
+<li>Une couleur c’est une donnée</li>
+<li>Une information pas forcément lisible immédiatement, lisible par un logiciel</li>
+<li>Lisible par un humain</li>
+<li>Textuel ou numérique</li>
+<li>Une information structurée</li>
+<li>Quantification / Qualification d’un phénomène</li>
+<li><p>La loi (CRPA) : donnée, lisible par machine</p></li>
+<li>Définition inclusive ==/== restrictive</li>
+<li><p>« Ce qui n’est pas considéré comme une donnée est une donnée »</p></li>
+</ul>
+<p>Comment ouvrir des données et se demander lesquelles sont à ouvrir ou pas?</p>
+<p>Ile de France: Les agents doivent se justifier en cas d’un refus d’ouverture de données.</p>
+<p>Avec la Loi pour une République Numérique, cette question de ce qu’est une donnée va devenir de plus en plus importante.</p>
+<p>R est plus ou moins bien adapté pour traiter certains types/formats, il va falloir donc savoir à l’avance lesquelles vont représenter plus de travail ou pas à traiter avec R</p>
+<blockquote>
+<p><a href="https://mitpress.mit.edu/books/raw-data-oxymoron">« Raw data is an oxymoron »</a> / les données brutes sont un oxymore.</p>
+</blockquote>
+<p>RUSSELL ACKOFF - Théoricien des systèmes &amp; cybernétique</p>
+<p>« Il faut que l’information circule pour qu’elle ne disparaisse pas. » Sa vision: Les données seraient brutes par essence. Si on ouvre les données, on va créer plus de savoir et plus de sagesse.</p>
+<p>Notion de données, 2 dimensions :</p>
+<ul>
+<li>pas de condition de véracité (Rosenberg, 2013)</li>
+<li>point de départ de nouveaux réseaux sociotechniques</li>
+</ul>
+<p>Les données sont obtenues : « Décidément, on ne devrait jamais parler de “données”, mais toujours d’“obtenues”. » Bruno Latour, 1993</p>
+<p>En statistiques, la définition de la donnée varie un peu selon le cadre conceptuel et philosophique. D’un côté, les fréquentistes, pour qui on peut tester la véracité d’énoncés au moyen d’expériences et de tests statistiques. Chaque épreuve se déroule indépendamment des croyances ou connaissances préalables. Pour les bayésiens, au contraire, il y a beaucoup plus de doutes à avoir vis-à-vis de l’objectivation du monde, c’est une approche beaucoup moins naïve qui porte sur la quantification des croyances sur le monde, qui intègre les croyances ou connaissances qu’on a déjà. Dans ce contexte, les données permettent de mettre à jour ces croyances mais n’en sont pas radicalement distinctes.</p>
+</div>
+<div id="quest-ce-que-lopen-data" class="section level2">
+<h2>Qu’est ce que l’open data ?</h2>
+<p>Voir la définition de l’<a href="http://opendefinition.org/od/1.1/fr/">Open Definition</a></p>
+<p>OD : données réutilisables dans des formats techniques et juridiques (2 licences : Licence Ouverte (citer la source - BY) et ODbL (citer la source + partager à l’identique : BY - SA)).</p>
+<p>Les données sont généralement gratuites.</p>
+<p>Réutilisation par tous, pour toutes formes d’usages.</p>
+<p>Lisibles par machines.</p>
+<p>Principes:</p>
+<ul>
+<li>Données accessibles</li>
+<li>Format ouvert</li>
+<li>Usage: attribuer à la source et redistribuer à l’identique</li>
+</ul>
+</div>
+<div id="quest-ce-que-le-big-data" class="section level2">
+<h2>Qu’est ce que le big data ?</h2>
+<p>Big Data : <a href="http://www.journaldunet.com/solutions/expert/51696/les-3-v-du-big-data---volume--vitesse-et-variete.shtml">règle des 3 V</a> (Vélocité, Volume, Variété) : hors des GAFA, on rencontre rarement des données massives qui respectent ces trois critères. Voir <a href="http://www.cairn.info/revue-informations-sociales-2015-5-page-26.htm">cet article de Samuel Goëta</a> qui permet de bien distinguer open data et big data. Ces données ne sont en général pas ouvertes, c’est un trésor bien gardé des organisations.</p>
+</div>
+<div id="quest-ce-que-le-linked-data" class="section level2">
+<h2>Qu’est ce que le linked data ?</h2>
+<p>Web Sémantique proposé par Tim Berners-Lee (4ème et 5ème étoiles du <a href="http://5stardata.info/en/">modèle 5* de T. Berners-Lee</a>). Données liées, Données décrites dans des vocabulaires, des nomenclatures. Encore considéré comme une utopie, le Linked Data demeure malgré tout un objectif qualitatif intéressant</p>
+<p>Un outil intéressant pour se rappeler des 5 * : <a href="http://www.cafepress.com/w3c_shop.597992118">le mug</a> !</p>
+</div>
+<div id="pourquoi-sinteresser-a-lanalyse-des-donnees" class="section level2">
+<h2>Pourquoi s’intéresser à l’analyse des données ?</h2>
+<p>La maîtrise de l’information est un élément essentiel du rapport au pouvoir (empowerment, donnée de capacités d’action)</p>
+<ul>
+<li>Professionnellement</li>
+<li>Personnellement, mouvement du self data : données pour reprise en main de certaines parties de sa vie.</li>
+<li>Littératie de donnée</li>
+<li>En tant que citoyen, déconstruire les algorithmes et se réapproprier les données qui servent à la décision publique</li>
+</ul>
+<p>Les données ne signifient rien à l’état brut. C’est un modèle qui permet de les interpréter : on fait des hypothèses sur le rapport des données avec la réalité et on donne du sens aux données pour confirmer/infirmer ce modèle.</p>
+<p>Tout modèle vient avec des postulats. Il y a toujours un modèle. Quand il n’y en a pas, il est implicite.</p>
+<p>Il faut donc expliciter nos modèles. Ex. de la taille : si je fais la moyenne, il faut que la distribution soit unimodale (il y a une seule valeur maximale). Si on fait la moyenne des tailles dans cette salle, c’est bimodal puisqu’il y a deux distributions différentes de la taille : les hommes et les femmes (la courbe de taille prendra la forme d’un chapeau mou avec 2 pics). La moyenne n’a aucun sens dans ce cas, ne correspond pas à une valeur interprétable. Dans ce contexte, calculer la moyenne n’a pas d’intérêt, il faut expliciter son modèle et l’adapter aux cas. La moyenne est un indicateur adapté lorsque la distribution est à peu près normale (en courbe de Gauss).</p>
+<p>S’initier à l’analyse de données, c’est apprendre à expliciter ses modèles, formuler les hypothèses sous-jacentes, les tester. Les aller-retours entre visualisations et modèle permettent de mieux préciser sa démarche. Référence : <a href="https://fr.wikipedia.org/wiki/Edward_Tufte">Edward Tufte</a></p>
+<p>In fine, il s’agit d’appréhender ses données de manière moins naïve.</p>
+<p>Le workflow de l’analyse de données :</p>
+<p><a href="http://r4ds.had.co.nz/explore-intro.html"><img src="data:image/png;base64,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" /></a></p>
+<p>En amont, import et nettoyage (phases souvent très consommatrices en temps); en aval, communication.</p>
+<p>Importer -&gt; Nettoyer -&gt; Transformer -&gt; Visualiser -&gt; Modéliser -&gt; Communiquer</p>
+<p>De Transformer à Modéliser : peut être une boucle jusqu’à obtention d’un résultat satisfaisant.</p>
+</div>
+<div id="et-vous-pourquoi-ca-vous-interesse" class="section level2">
+<h2>Et vous pourquoi ça vous intéresse ?</h2>
+<p>Eléments de réponse fournis :</p>
+<ul>
+<li>Se doter de méthodes / outils de nettoyage et transformation</li>
+<li>Mieux faire parler des données brutes, utiliser davantage nos propres données</li>
+<li>Élargir la palette d’outils d’analyse de données</li>
+<li>Trouver une manière de rassembler des méthodes ou outils aujourd’hui utilisés par des services différents</li>
+<li>Faciliter les croisements de données</li>
+<li>Coordonner transversalement des personnes qui utilisent déjà des données (BI, SIG, …)</li>
+</ul>
+<p>R : outil fonctionnant en ligne de commandes -&gt; on documente ce qu’on fait, ce qui facilite la reproductibilité des différentes composantes du workflow ci-dessus (gain en efficacité).</p>
+</div>
+<div id="lecosysteme-des-donnees" class="section level2">
+<h2>L’écosystème des données</h2>
+<p>Outils déjà utilisés par les participants :</p>
+<ul>
+<li>Excel / Calc / tableur classique</li>
+<li>SPSS, SPAD</li>
+<li>Tableau</li>
+<li>BO</li>
+<li>Open Refine (utilisation pour du nettoyage de données ou du géocodage) : www.openrefine.org</li>
+<li>CartoDB (visualisation)</li>
+<li>ESRI, QGis, MapInfo (carto)</li>
+</ul>
+<p>Formats de données :</p>
+<ul>
+<li>tabulaires (voir <a href="https://cran.r-project.org/web/packages/rio/vignettes/rio.html">RIO (R Input Output)</a>)</li>
+<li>Excel / tableurs</li>
+<li>formats texte (csv, tsv, csvy, psv, fwf) : ont l’avantage d’être publiquement documentés et relativement facilement exploitables par des machines. Moins facile à lire pour les humains</li>
+<li>Datapackages : format standardisé proposé par OpenKnowledge (csv avec métadonnées en JSON pour le tabulaire), mais encore peu répandu (quelques usages significatifs sur des thématiques ciblées comme les marchés publics)</li>
+<li>feather : format d’échange entre R et Python par ex. Avantage : lecture/écriture disque très rapide. Très prometteur lorsqu’il y a des échanges de gros volumes de données entre plusieurs langages</li>
+<li>formats propriétaires dans le domaine des statistiques :
+<ul>
+<li>.dta</li>
+<li>.sav, .por</li>
+<li>.dbf (attention, versions incompatibles entre elles)</li>
+<li>.sas7bdat, .xpt</li>
+<li>…</li>
+</ul></li>
+<li>Formats plus exotiques :
+<ul>
+<li>XML</li>
+<li>HTML</li>
+<li>JSON (la bascule vers des données tabulaires n’est pas triviale)</li>
+<li>YAML (souvent utilisé pour stocker des méta-données)</li>
+<li>…</li>
+</ul></li>
+<li>Formats spécialisés
+<ul>
+<li>Exemple des données spatiales :
+<ul>
+<li>GDAL et sa version R (<a href="http://rgdal.sourceforge.net/">RGDAL</a> : gère 132 formats)</li>
+<li>Shapefile (format propriétaire qui s’est imposé comme le standard malgré ses nombreux défauts : pas très bien documenté avec des limitations qui nuisent à l’intelligibilité)</li>
+<li>GeoJSON : format ouvert, texte</li>
+<li>topojson : format de données spatiales topologiques (intéressant à plusieurs points de vue)</li>
+<li>kml (xml spécialisé en données spatiales)</li>
+<li>mapinfo</li>
+<li>formats raster (stockage plus économique que les formats vectoriels mais dégradation de la qualité lors des zooms)</li>
+<li>tiles</li>
+<li>…</li>
+</ul></li>
+</ul></li>
+</ul>
+<p>Bases de données :</p>
+<ul>
+<li>Surtout intéressantes sur de la donnée chaude (i.e. susceptible de changer souvent)</li>
+<li>Bases relationnelles / SQL (orientées ligne, c’est-à-dire adaptées pour insérer, lire, mettre à jour des lignes de données) : leur performance est fortement corrélée à la manière dont les données sont indexées, ce qui est un inconvénient car il faut avoir très bien pensé son système et ses usages avant de le mettre en oeuvre
+<ul>
+<li>MySQL</li>
+<li>SQLite (pour des volumes pas trop importants, bien adapté pour de l’électronique embarquée)</li>
+<li>PostgresSQL : capacité de gestion spatiale intéressante (PostGIS) mais complexité d’administration</li>
+<li>…</li>
+</ul></li>
+<li>Bases SQL orientées colonnes : elles sont optimisées pour lire des colonnes, adaptées pour des analyses globales sur l’ensemble du contenu d’une base
+<ul>
+<li>MonetDB, <a href="https://www.monetdb.org/blog/monetdblite-r">MonetDBLite</a> (utilisable dans R sans installation externe et performante, l’indexation s’effectuant à la volée)</li>
+<li>…</li>
+</ul></li>
+<li>Bases NoSQL : bases qui ne reposent pas seulement sur une logique SQL ou tabulaire (a priori, on peut avoir différents types de données : fichiers, images, textes, etc.). Théoriquement, il n’est pas nécessaire de connaître le schéma de la table (possibilité de modifications du schéma de données en cours de route). Du coup, l’indexation est moins efficace que sur des bases SQL, ce qui amène des acteurs à mélanger des bases NoSQL et SQL pour répondre à ce souci
+<ul>
+<li>MongoDB</li>
+<li>Cassandra</li>
+<li>CouchDB</li>
+<li>SimpleDB</li>
+<li>BigTable</li>
+<li>HBase</li>
+<li>Neo4J (base orientée graphe : les enregistrements stockés sont connectés les uns aux autres)</li>
+<li>Redis</li>
+<li>…</li>
+</ul></li>
+</ul>
+<p>Les API : moyen de communication entre 2 machines - <a href="https://fr.wikipedia.org/wiki/Interface_de_programmation" class="uri">https://fr.wikipedia.org/wiki/Interface_de_programmation</a></p>
+<p>Beaucoup de formats de données et de types des bases de données, d’où de nombreux outils d’exploitation des données …</p>
+</div>
+<div id="les-outils" class="section level2">
+<h2>Les outils</h2>
+<p>Ceux qu’on a l’habitude d’utiliser ou que tout le monde connaît :</p>
+<ul>
+<li>Excel, LibreOffice, un tableur quelconque
+<ul>
+<li>Inconvénients : se présentent comme des outils gérant des données tabulaires mais mélangent des éléments très hétérogènes, ce qui rend les données issues de ce type d’outils difficilement exploitables par des machines. Aujourd’hui, cela conduit à l’apparition <a href="http://comma-chameleon.io/">d’outils</a> qui gèrent réellement des données tabulaires avec des interfaces graphiques csv</li>
+</ul></li>
+</ul>
+<p>Outils avec interface graphique (GUI)</p>
+<ul>
+<li>Sphinx</li>
+<li>SPSS</li>
+<li>SAS : qualité reconnue (outil préférentiel de l’INSEE jusqu’à présent; coûte très cher)</li>
+<li>OpenRefine</li>
+<li><a href="https://www.databasic.io/en/wtfcsv/">WTF CSV</a> : permet d’avoir une 1ère vision du contenu d’un fichier CSV sans entrer dans un outil comme R</li>
+<li>Tableau : permet de faire de la belle dataviz, mais propriétaire</li>
+</ul>
+<p>Outils avec une interface en lignes de commande (CLI)</p>
+<ul>
+<li>Python</li>
+<li>Julia (courbe très ascendante pour ce langage encore très jeune)</li>
+<li>R</li>
+<li>C/C++ (une tendance actuelle dans l’utilisation de R est d’écrire les algos les plus gourmands en C++)</li>
+<li>Java</li>
+<li>Javascript : langage interprété dont les utilisations se sont étendues</li>
+<li>outils bash : outils qui peuvent demeurer performants mais très mals documentés et difficiles à utiliser</li>
+</ul>
+<p>Tous ces outils CLI s’interfacent très bien avec R.</p>
+<p>Outils spécialisés. Ex: cas de la cartographie :</p>
+<ul>
+<li>QGis : lourd à mettre en oeuvre</li>
+<li><a href="http://philcarto.free.fr/">PhilCarto</a> : permet de réaliser de la cartographie thématique. Mérite le coup d’oeil, mais mets des lunettes 80’s ;-). Propriétaire.</li>
+<li>MapInfo</li>
+<li>ArcGIS</li>
+<li>Umap : bien adapté pour les débutants.</li>
+<li>Leaflet : librairie Javascript permettant de faire de la cartographie (s’interface bien avec R)</li>
+</ul>
+</div>
+<div id="les-infrastructures" class="section level2">
+<h2>Les infrastructures</h2>
+<p>Celles qui se développent dans le Big Data (utilisent la parallélisation pour optimiser les traitements de données et distribuer les stockages de celles-ci) :</p>
+<ul>
+<li>Hadoop</li>
+<li>Spark</li>
+<li>H20</li>
+<li>…</li>
+</ul>
+</div>
+<div id="one-tool-to-rule-them-all" class="section level2">
+<h2>One tool to rule them all</h2>
+<p>Un outil, R, pour aller visiter l’ensemble de ces univers. Initialement conçu pour la manipulation des données.</p>
+<p>R prend la suite de S : langage de haut niveau (= proche d’un langage compréhensible par l’homme mais relativement inefficace en terme de performances)</p>
+<p>S langage développé dans les Bell Labs. R a été développé à l’origine par des universitaires statisticiens, pour répondre à leurs besoins, sans restrictions de licences (-&gt; caractère libre) Le développement historique de R s’est opéré par l’intermédiaire des packages (décentralisés) développés autour du coeur du langage (qui est demeuré très stable depuis le départ). R est devenu leader incontesté dans le domaine des statistiques avec une forte communauté internationale. Au fil du temps, il est devenu un outil à vocation généraliste (dév. Web, machine learning, etc.). Par ailleurs, il permet d’interfacer de nombreux outils spécialisés (grâce à l’appel de librairies).</p>
+<p>Énormément de ressources disponibles (souvent en anglais même si la communauté et les ressources françaises se développent). Une petite sélection :</p>
+<ul>
+<li>Un livre sur R : <a href="http://r4ds.had.co.nz">R for Data Science</a> de Garrett Grolemund et Hadley Wickham (rock star de R)</li>
+<li>blogs : </li>
+<li>des listes de diffusion thématiques</li>
+<li>un site de Q/R communautaires : <a href="http://stackoverflow.com/tagged/r" class="uri">http://stackoverflow.com/tagged/r</a></li>
+<li>twitter avec le hashtag #Rstats</li>
+</ul>
+<p>Une communauté <a href="https://rladies.org/">bienveillance avec les femmes</a>.</p>
+<p>Une syntaxe de plus en plus facile</p>
+<p><a href="https://rstudio.github.io/rstudioaddins/">Des progrès vers du GUI</a></p>
+</div>
+<div id="cest-quoi-tes-donnees" class="section level2">
+<h2>C’est quoi tes données?</h2>
+<p>Les questions auxquelles il faut savoir répondre :</p>
+<ul>
+<li>domaine</li>
+<li>format</li>
+<li>taille</li>
+<li>granularité</li>
+<li>fraîcheur</li>
+<li>quelle analyse veut-on en faire</li>
+</ul>
+</div>
+<div id="installation-de-r" class="section level2">
+<h2>Installation de R</h2>
+<ul>
+<li><a href="https://cloud.r-project.org/">Installation de R</a></li>
+<li>Sous windows télécharger <a href="https://cran.r-project.org/bin/windows/Rtools/">R Tools</a></li>
+<li>Sous MacOS X il faut probablement <a href="http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/">installer les “command line tools”</a> (pour pouvoir compiler des packages lorsque nécessaire)</li>
+<li>Installer ensuite <a href="https://www.rstudio.com/products/rstudio/download/preview/">Rstudio</a></li>
+</ul>
 </div>
 </div>
 </div>

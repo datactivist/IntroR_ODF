@@ -46,3 +46,290 @@ Comment connecter un simple formulaire Google Form, ses données récoltées dan
 Le formateur a créé préalablement [un code R](./dashboard.Rmd) qui permet de visualiser en temps réel [un dashboard](./dashboard.html) qui présente les résultats. 
 
 La force de R, c'est de permettre d'utiliser un code simple et concis (70 lignes dans ce cas). Il faut une heure à une heure et demi pour l'écrire.
+
+## La donnée ?
+
+Selon vous, qu'est ce qu'une donnée ? 
+
+- Quantification
+- Une couleur c'est une donnée
+- Une information pas forcément lisible immédiatement, lisible par un logiciel
+- Lisible par un humain
+- Textuel ou numérique
+- Une information structurée
+- Quantification / Qualification d'un phénomène 
+- La loi (CRPA)  : donnée, lisible par machine
+
+- Définition inclusive ==/== restrictive
+- « Ce qui n’est pas considéré comme une donnée est une donnée »
+
+Comment ouvrir des données et se demander lesquelles sont à ouvrir ou pas?
+
+Ile de France: Les agents doivent se justifier en cas d'un refus d'ouverture de données. 
+
+Avec la Loi pour une République Numérique, cette question de ce qu’est une donnée va devenir de plus en plus importante.  
+
+R est plus ou moins bien adapté pour traiter certains types/formats, il va falloir donc savoir à l'avance lesquelles vont représenter plus de travail ou pas à traiter avec R
+
+> [« Raw data is an oxymoron »](https://mitpress.mit.edu/books/raw-data-oxymoron) / les données brutes sont un oxymore. 
+
+RUSSELL ACKOFF - Théoricien des systèmes & cybernétique 
+
+« Il faut que l’information circule pour qu’elle ne disparaisse pas. »
+Sa vision: Les données seraient brutes par essence.
+Si on ouvre les données, on va créer plus de savoir et plus de sagesse. 
+
+Notion de données, 2 dimensions : 
+
+- pas de condition de véracité (Rosenberg, 2013) 
+- point de départ de nouveaux réseaux sociotechniques
+    
+Les données sont obtenues : « Décidément, on ne devrait jamais parler de “données”, mais toujours d’“obtenues”. »  Bruno Latour, 1993
+
+En statistiques, la définition de la donnée varie un peu selon le cadre conceptuel et philosophique. D'un côté, les fréquentistes, pour qui on peut tester la véracité d'énoncés au moyen d'expériences et de tests statistiques. Chaque épreuve se déroule indépendamment des croyances ou connaissances préalables. Pour les bayésiens, au contraire, il y a beaucoup plus de doutes à avoir vis-à-vis de l'objectivation du monde, c'est une approche beaucoup moins naïve qui porte sur la quantification des croyances sur le monde, qui intègre les croyances ou connaissances qu'on a déjà. Dans ce contexte, les données permettent de mettre à jour ces croyances mais n'en sont pas radicalement distinctes.
+
+
+## Qu'est ce que l'open data ?
+
+Voir la définition de l'[Open Definition](http://opendefinition.org/od/1.1/fr/)
+
+OD : données réutilisables dans des formats techniques et juridiques (2 licences : Licence Ouverte (citer la source - BY) et ODbL (citer la source + partager à l'identique : BY - SA)).
+
+Les données sont généralement gratuites.
+
+Réutilisation par tous, pour toutes formes d'usages.
+
+Lisibles par machines.
+
+Principes: 
+
+- Données accessibles
+- Format ouvert
+- Usage: attribuer à la source et redistribuer à l’identique 
+
+
+## Qu'est ce que le big data ?
+
+Big Data : [règle des 3 V](http://www.journaldunet.com/solutions/expert/51696/les-3-v-du-big-data---volume--vitesse-et-variete.shtml) (Vélocité, Volume, Variété) : hors des GAFA, on rencontre rarement des données massives qui respectent ces trois critères. Voir [cet article de Samuel Goëta](http://www.cairn.info/revue-informations-sociales-2015-5-page-26.htm) qui permet de bien distinguer open data et big data.
+Ces données ne sont en général pas ouvertes, c'est un trésor bien gardé des organisations. 
+
+## Qu'est ce que le linked data ?
+
+Web Sémantique proposé par Tim Berners-Lee (4ème et 5ème étoiles du [modèle 5* de T. Berners-Lee](http://5stardata.info/en/)).
+Données liées, Données décrites dans des vocabulaires, des nomenclatures. Encore considéré comme une utopie, le Linked Data demeure malgré tout un objectif qualitatif intéressant
+
+Un outil intéressant pour se rappeler des 5 * : [le mug](http://www.cafepress.com/w3c\_shop.597992118) ! 
+
+
+## Pourquoi s’intéresser à l'analyse des données ? 
+
+La maîtrise de l'information est un élément essentiel du rapport au pouvoir (empowerment, donnée de capacités d'action)
+
+- Professionnellement
+- Personnellement, mouvement du self data : données pour reprise en main de certaines parties de sa vie. 
+- Littératie de donnée 
+- En tant que citoyen, déconstruire les algorithmes et se réapproprier les données qui servent à la décision publique
+
+Les données ne signifient rien à l'état brut. C'est un modèle qui permet de les interpréter : on fait des hypothèses sur le rapport des données avec la réalité et on donne du sens aux données pour confirmer/infirmer ce modèle. 
+
+Tout modèle vient avec des postulats. Il y a toujours un modèle. Quand il n'y en a pas, il est implicite. 
+
+Il faut donc expliciter nos modèles. Ex. de la taille : si je fais la moyenne, il faut que la distribution soit unimodale (il y a une seule valeur maximale). Si on fait la moyenne des tailles dans cette salle, c'est bimodal puisqu'il y a deux distributions différentes de la taille : les hommes et les femmes (la courbe de taille prendra la forme d'un chapeau mou avec 2 pics). La moyenne n'a aucun sens dans ce cas, ne correspond pas à une valeur interprétable. Dans ce contexte, calculer la moyenne n'a pas d'intérêt, il faut expliciter son modèle et l'adapter aux cas. La moyenne est un indicateur adapté lorsque la distribution est à peu près normale (en courbe de Gauss).
+
+S'initier à l'analyse de données, c'est apprendre à expliciter ses modèles, formuler les hypothèses sous-jacentes, les tester. 
+Les aller-retours entre visualisations et modèle permettent de mieux préciser sa démarche. 
+Référence : [Edward Tufte](https://fr.wikipedia.org/wiki/Edward_Tufte)
+
+In fine, il s'agit d'appréhender ses données de manière moins naïve. 
+
+Le workflow de l'analyse de données : 
+
+[![](./img/data-science-model.png)](http://r4ds.had.co.nz/explore-intro.html)
+
+En amont, import et nettoyage (phases souvent très consommatrices en temps); en aval, communication.
+
+Importer -> Nettoyer -> Transformer -> Visualiser -> Modéliser -> Communiquer
+
+De Transformer à Modéliser : peut être une boucle jusqu’à obtention d'un résultat satisfaisant.
+
+## Et vous pourquoi ça vous intéresse ?
+ 
+Eléments de réponse fournis :
+
+   *  Se doter de méthodes / outils de nettoyage et transformation
+   *  Mieux faire parler des données brutes, utiliser davantage nos propres données
+   *  Élargir la palette d'outils d'analyse de données
+   *  Trouver une manière de rassembler des méthodes ou outils aujourd'hui utilisés par des services différents
+   *  Faciliter les croisements de données
+   *  Coordonner transversalement des personnes qui utilisent déjà des données (BI, SIG, ...)
+   
+R : outil fonctionnant en ligne de commandes -> on documente ce qu'on fait, ce qui facilite la reproductibilité des différentes composantes du workflow ci-dessus (gain en efficacité).
+ 
+## L'écosystème des données
+
+Outils déjà utilisés par les participants :
+
+   * Excel / Calc / tableur classique
+   * SPSS, SPAD
+   * Tableau
+   * BO
+   * Open Refine (utilisation pour du nettoyage de données ou du géocodage) : www.openrefine.org 
+   * CartoDB (visualisation)
+   * ESRI, QGis, MapInfo (carto)
+
+Formats de données :
+
+   * tabulaires (voir [RIO (R Input Output)](https://cran.r-project.org/web/packages/rio/vignettes/rio.html))
+   * Excel / tableurs
+   * formats texte (csv, tsv, csvy, psv, fwf) : ont l'avantage d'être publiquement documentés et relativement facilement exploitables par des machines. Moins facile à lire pour les humains
+   * Datapackages : format standardisé proposé par OpenKnowledge (csv avec métadonnées en JSON pour le tabulaire), mais encore peu répandu (quelques usages significatifs sur des thématiques ciblées comme les marchés publics)
+   * feather : format d'échange entre R et Python par ex. Avantage : lecture/écriture disque très rapide. Très prometteur lorsqu'il y a des échanges de gros volumes de données entre plusieurs langages
+   * formats propriétaires dans le domaine des statistiques :
+       * .dta
+       * .sav, .por 
+       * .dbf (attention, versions incompatibles entre elles)
+       * .sas7bdat, .xpt
+       * ...
+   * Formats plus exotiques :
+       * XML
+       * HTML
+       * JSON (la bascule vers des données tabulaires n'est pas triviale)
+       * YAML (souvent utilisé pour stocker des méta-données)
+       * ...
+   * Formats spécialisés
+       * Exemple des données spatiales :
+           * GDAL et sa version R ([RGDAL](http://rgdal.sourceforge.net/) : gère 132 formats)
+           * Shapefile (format propriétaire qui s'est imposé comme le standard malgré ses nombreux défauts : pas très bien documenté avec des limitations qui nuisent à l'intelligibilité)
+           * GeoJSON : format ouvert, texte
+           * topojson : format de données spatiales topologiques (intéressant à plusieurs points de vue)
+           * kml (xml spécialisé en données spatiales)
+           * mapinfo
+           * formats raster (stockage plus économique que les formats vectoriels mais dégradation de la qualité lors des zooms)
+           * tiles
+           * ...
+
+Bases de données :
+
+   * Surtout intéressantes sur de la donnée chaude (i.e. susceptible de changer souvent)
+   * Bases relationnelles / SQL (orientées ligne, c'est-à-dire adaptées pour insérer, lire, mettre à jour des lignes de données) : leur performance est fortement corrélée à la manière dont les données sont indexées, ce qui est un inconvénient car il faut avoir très bien pensé son système et ses usages avant de le mettre en oeuvre
+       * MySQL
+       * SQLite (pour des volumes pas trop importants, bien adapté pour de l'électronique embarquée)
+       * PostgresSQL : capacité de gestion spatiale intéressante (PostGIS) mais complexité d'administration
+       * ...
+   * Bases SQL orientées colonnes : elles sont optimisées pour lire des colonnes, adaptées pour des analyses globales sur l'ensemble du contenu d'une base
+       * MonetDB, [MonetDBLite](https://www.monetdb.org/blog/monetdblite-r) (utilisable dans R sans installation externe et performante, l'indexation s'effectuant à la volée)
+       * ...
+   * Bases NoSQL : bases qui ne reposent pas seulement sur une logique SQL ou tabulaire (a priori, on peut avoir différents types de données : fichiers, images, textes, etc.). Théoriquement, il n'est pas nécessaire de connaître le schéma de la table (possibilité de modifications du schéma de données en cours de route). Du coup, l'indexation est moins efficace que sur des bases SQL, ce qui amène des acteurs à mélanger des bases NoSQL et SQL pour répondre à ce souci
+       * MongoDB
+       * Cassandra
+       * CouchDB
+       * SimpleDB
+       * BigTable
+       * HBase
+       * Neo4J (base orientée graphe : les enregistrements stockés sont connectés les uns aux autres)
+       * Redis
+       * ...
+
+Les API : moyen de communication entre 2 machines - https://fr.wikipedia.org/wiki/Interface_de_programmation
+
+Beaucoup de formats de données et de types des bases de données, d'où de nombreux outils d'exploitation des données ...
+
+## Les outils
+
+Ceux qu'on a l'habitude d'utiliser  ou que tout le monde connaît :
+
+   * Excel, LibreOffice, un tableur quelconque
+       * Inconvénients : se présentent comme des outils gérant des données tabulaires mais mélangent des éléments très hétérogènes, ce qui rend les données issues de ce type d'outils difficilement exploitables par des machines. Aujourd'hui, cela conduit à l'apparition [d'outils](http://comma-chameleon.io/) qui gèrent réellement des données tabulaires avec des interfaces graphiques csv
+
+Outils avec interface graphique (GUI)
+
+   * Sphinx
+   * SPSS
+   * SAS : qualité reconnue (outil préférentiel de l'INSEE jusqu'à présent; coûte très cher)
+   * OpenRefine
+   * [WTF CSV](https://www.databasic.io/en/wtfcsv/) : permet d'avoir une 1ère vision du contenu d'un fichier CSV sans entrer dans un outil comme R
+   * Tableau : permet de faire de la belle dataviz, mais propriétaire
+   
+Outils avec une interface en lignes de commande (CLI)
+
+   * Python
+   * Julia (courbe très ascendante pour ce langage encore très jeune)
+   * R
+   * C/C++ (une tendance actuelle dans l'utilisation de R est d'écrire les algos les plus gourmands en C++)
+   * Java
+   * Javascript : langage interprété dont les utilisations se sont étendues
+   * outils bash : outils qui peuvent demeurer performants mais très mals documentés et difficiles à utiliser
+   
+Tous ces outils CLI s'interfacent très bien avec R.
+
+Outils spécialisés. Ex: cas de la cartographie :
+
+   * QGis : lourd à mettre en oeuvre
+   * [PhilCarto](http://philcarto.free.fr/) : permet de réaliser de la cartographie thématique. Mérite le coup d'oeil, mais mets des lunettes 80's ;-). Propriétaire.
+   * MapInfo
+   * ArcGIS
+   * Umap : bien adapté pour les débutants.
+   * Leaflet : librairie Javascript permettant de faire de la cartographie (s'interface bien avec R)
+   
+## Les infrastructures
+
+Celles qui se développent dans le Big Data (utilisent la parallélisation pour optimiser les traitements de données et distribuer les stockages de celles-ci) :
+
+- Hadoop
+- Spark
+- H20
+- ...
+
+## One tool to rule them all
+
+Un outil, R, pour aller visiter l'ensemble de ces univers.
+Initialement conçu pour la manipulation des données.
+
+R prend la suite de S : langage de haut niveau (= proche d'un langage compréhensible par l'homme mais relativement inefficace en terme de performances)
+
+S langage développé dans les Bell Labs.
+R a été développé à l'origine par des universitaires statisticiens, pour répondre à leurs besoins, sans restrictions de licences (-> caractère libre)
+Le développement historique de R s'est opéré par l'intermédiaire des packages (décentralisés) développés autour du coeur du langage (qui est demeuré très stable depuis le départ). 
+R est devenu leader incontesté dans le domaine des statistiques avec une forte communauté internationale.
+Au fil du temps, il est devenu un outil à vocation généraliste (dév. Web, machine learning, etc.). Par ailleurs, il permet d'interfacer de nombreux outils spécialisés (grâce à l'appel de librairies).
+
+Énormément de ressources disponibles (souvent en anglais même si la communauté et les ressources françaises se développent). Une petite sélection :
+
+   * Un livre sur R : [R for Data Science](http://r4ds.had.co.nz) de Garrett Grolemund et Hadley Wickham (rock star de R)
+   * blogs : \url{https://www.r-bloggers.com}
+   * des listes de diffusion thématiques
+   * un site de Q/R communautaires : http://stackoverflow.com/tagged/r
+   * twitter avec le hashtag #Rstats
+   
+   
+Une communauté [bienveillance avec les femmes](https://rladies.org/).
+
+Une syntaxe de plus en plus facile
+
+[Des progrès vers du GUI](https://rstudio.github.io/rstudioaddins/)
+
+
+## C'est quoi tes données?
+
+Les questions auxquelles il faut savoir répondre : 
+
+- domaine
+- format
+- taille
+- granularité
+- fraîcheur
+- quelle analyse veut-on en faire
+
+## Installation de R
+
+   * [Installation de R](https://cloud.r-project.org/)
+   * Sous windows télécharger [R Tools](https://cran.r-project.org/bin/windows/Rtools/)
+   * Sous MacOS X il faut probablement [installer les "command line tools"](http://osxdaily.com/2014/02/12/install-command-line-tools-mac-os-x/) (pour pouvoir compiler des packages lorsque nécessaire)
+   * Installer ensuite [Rstudio](https://www.rstudio.com/products/rstudio/download/preview/)
+   
+   
+   
+
+
+
+
