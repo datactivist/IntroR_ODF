@@ -131,3 +131,48 @@ reserve %>%
   scale_groupes
 
 dev.off()
+
+# graphiques bivariés
+
+reserve %>% 
+  group_by(GROUPE_SIGLE) %>% 
+  summarise(valeur = mean(MONTANT_SUBVENTION)) %>% 
+  filter(!is.na(GROUPE_SIGLE)) %>% 
+  ggplot(aes(x = GROUPE_SIGLE, y = valeur)) +
+  geom_bar(stat = "identity")
+
+# facet
+
+reserve %>% 
+  ggplot(aes(x = MONTANT_SUBVENTION)) +
+  geom_histogram()
+
+reserve %>% 
+  ggplot(aes(x = MONTANT_SUBVENTION)) +
+  geom_histogram(bins = 100)
+
+
+# changer l'échelle
+
+reserve %>% 
+  ggplot(aes(x = MONTANT_SUBVENTION)) +
+  geom_histogram(bins = 30) +
+  scale_x_log10(labels =  scales::comma) 
+  
+# facet par groupe parlementaire
+
+reserve %>% 
+  ggplot(aes(x = MONTANT_SUBVENTION)) +
+  geom_histogram(bins = 30) +
+  scale_x_log10(labels =  scales::comma) +
+  facet_wrap(~ GROUPE_SIGLE, scales = "free_y")
+
+# que sont les députés NA ?
+
+reserve %>% 
+  filter(is.na(GROUPE_SIGLE)) %>% 
+  distinct(NOM_DEPUTE_NOSDEPUTES)
+
+reserve %>% 
+  filter(is.na(GROUPE_SIGLE)) %>% 
+  distinct(NOM_BENEFICIAIRE)
