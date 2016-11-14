@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction à R</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="jour4_files/rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="jour4_files/rmdshower/style-common.css">
+  <link rel="stylesheet" href="jour4_files/rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="jour4_files/rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Introduction à R</h1>
+    <p>Open Data France et datactivi.st</p>
+  </header>
+
+    
+  
+<section id="introduction-a-r-le-couteau-suisse-de-la-data-science" class="slide level2">
+<h2>Introduction à R, le couteau suisse de la data science</h2>
+<p>
+</p>
+<p>
+</p>
+Jour 4
+<p>
+</p>
+<p>
+</p>
+<p>
+Joël Gombin et Samuel Goëta (datactivi.st)
+</p>
+<p>
+Retrouvez les matériaux sur : <a href="www.github.com/datactivist/IntroR_ODF" class="uri">www.github.com/datactivist/IntroR_ODF</a>
+</p>
+<p>
+Pad collaboratif : <a href="https://frama.link/formationR_pad4" class="uri">https://frama.link/formationR_pad4</a>
+</p>
+</section>
+<section id="ce-quon-a-deja-appris" class="slide level2">
+<h2>Ce qu’on a déjà appris</h2>
+<ul>
+<li class="fragment next">l’écosystème dans lequel s’inscrit R</li>
+<li class="fragment next">importer des données</li>
+<li class="fragment next">préparer des <em>tidy data</em></li>
+<li class="fragment next">transformer les données</li>
+<li class="fragment next">fusionner des jeux de données</li>
+<li class="fragment next">agréger un jeu de données</li>
+</ul>
+</section>
+<section id="ce-quon-a-deja-appris-1" class="slide level2">
+<h2>Ce qu’on a déjà appris</h2>
+<p><img src="img/data-science-model.png" width="90%" style="display: block; margin: auto;" /></p>
+</section>
+<section id="objectifs-de-la-journee" class="slide level2">
+<h2>Objectifs de la journée</h2>
+<ul>
+<li class="fragment next">acquérir quelques principes de dataviz (Tufte, Wilkinson, Few…)</li>
+<li class="fragment next">avoir une vision d’ensemble des systèmes graphiques dans R</li>
+<li class="fragment next">se familiariser avec ggplot2 et la grammaire des graphiques</li>
+<li class="fragment next">Aller plus loin avec ggplot2 (petits multiples, visualisation de modèles, composition de dataviz complexes…)</li>
+</ul>
+</section>
+<section id="consolidation-des-acquis-de-la-session-precedente" class="titleslide slide level1"><h2 class="shout">Consolidation des acquis de la session précédente</h2></section><section id="exercice" class="slide level2">
+<h2>Exercice</h2>
+<ul>
+<li class="fragment next">sélectionner un jeu de données</li>
+<li class="fragment next">s’assurer que le jeu de données est “tidy”</li>
+<li class="fragment next">transformer le jeu de données comme nécessaire pour exploitation : recodage, transformation des variables, agrégation…</li>
+</ul>
+</section>
+<section id="le-panorama-des-systemes-graphiques-de-r" class="titleslide slide level1"><h2 class="shout">Le panorama des systèmes graphiques de R</h2></section><section id="le-panorama-des-systemes-graphiques-de-r-1" class="slide level2">
+<h2>Le panorama des systèmes graphiques de R</h2>
+<ul>
+<li class="fragment next">base graphics : mélange bas niveau/haut niveau, complexe, pas très cohérent, mais rapide et puissant</li>
+<li class="fragment next">lattice : haut niveau, a une grammaire, plus très utilisé</li>
+<li class="fragment next">ggplot2 : haut niveau, grammaire cohérente, très puissant, très largement utilisé et <a href="http://ggplot.yhathq.com/">imité</a></li>
+</ul>
+</section>
+<section id="notre-outil-a-tout-faire-ggplot2" class="titleslide slide level1"><h2 class="shout">Notre outil à tout faire : ggplot2</h2></section><section id="la-notion-de-grammaire-de-visualisation" class="slide level2">
+<h2>La notion de grammaire de visualisation</h2>
+<ul>
+<li class="fragment next">données</li>
+<li class="fragment next">correspondances esthétiques (<code>aes</code>thetic mapping)</li>
+<li class="fragment next">couches (<code>layer</code>) : <code>geom</code> et <code>stat</code></li>
+<li class="fragment next">échelles (<code>scale</code>)</li>
+<li class="fragment next">un système de coordonnées (<code>coord</code>)</li>
+<li class="fragment next">petits multiples (<code>facet</code>)</li>
+<li class="fragment next">un thème (<code>theme</code>)</li>
+</ul>
+</section><section id="un-premier-exemple-simple" class="slide level2">
+<h2>Un premier exemple simple</h2>
+<ul>
+<li class="fragment next">choisir un jeu de données</li>
+<li class="fragment next">faire des graphiques descriptifs (univariés)</li>
+<li class="fragment next">faire des graphiques bivariés</li>
+<li class="fragment next">changer les <code>aes</code></li>
+<li class="fragment next">changer les <code>geom</code></li>
+<li class="fragment next">changer les <code>theme</code></li>
+</ul>
+</section><section id="les-principaux-geom" class="slide level2">
+<h2>Les principaux <code>geom</code></h2>
+<ul>
+<li class="fragment next"><code>geom_point</code></li>
+<li class="fragment next"><code>geom_line</code></li>
+<li class="fragment next"><code>geom_text</code></li>
+<li class="fragment next"><code>geom_quantile</code></li>
+<li class="fragment next"><code>geom_histogram</code></li>
+<li class="fragment next"><code>geom_density</code></li>
+<li class="fragment next"><code>geom_smooth</code></li>
+<li class="fragment next"><code>geom_bar</code></li>
+<li class="fragment next">et même <code>geom_map</code></li>
+</ul>
+</section><section id="les-principaux-aesthetics" class="slide level2">
+<h2>Les principaux <code>aes</code>thetics</h2>
+<ul>
+<li class="fragment next"><code>x</code></li>
+<li class="fragment next"><code>y</code></li>
+<li class="fragment next"><code>colour</code></li>
+<li class="fragment next"><code>size</code></li>
+<li class="fragment next">line width <code>lwd</code></li>
+<li class="fragment next">line type <code>lty</code></li>
+</ul>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="jour4_files/rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
