@@ -50,3 +50,71 @@ reserve %>%
 reserve %>% 
   ggplot(aes(x = 1)) +
   geom_bar(aes(fill = GROUPE_SIGLE), stat = "count", position = position_fill())
+
+# thème xkcd !
+
+library(xkcd)
+reserve %>% 
+  ggplot(aes(x = GROUPE_SIGLE)) +
+  geom_bar(stat = "count") +
+  theme_xkcd()
+
+# on inverse les axes
+reserve %>% 
+  ggplot(aes(x = GROUPE_SIGLE)) +
+  geom_bar(stat = "count") +
+  coord_flip()
+
+# on mappe la variable GROUPE_SIGLE à deux aesthetics
+reserve %>% 
+  ggplot(aes(x = GROUPE_SIGLE)) +
+  geom_bar(aes(fill = GROUPE_SIGLE), stat = "count")
+  
+# changement de thème
+reserve %>% 
+  ggplot(aes(x = GROUPE_SIGLE)) +
+  geom_bar(stat = "count") +
+  theme_bw()
+
+# changement de thème
+reserve %>% 
+  ggplot(aes(x = GROUPE_SIGLE)) +
+  geom_bar(stat = "count", fill = "green") +
+  theme_bw()
+
+# changement de scale
+reserve %>% 
+  ggplot(aes(x = GROUPE_SIGLE)) +
+  geom_bar(aes(fill = GROUPE_SIGLE), stat = "count") +
+  theme_bw() +
+  scale_fill_brewer("Paired", type = "qual")
+
+# changement de scale à la main
+reserve %>% 
+  ggplot(aes(x = GROUPE_SIGLE)) +
+  geom_bar(aes(fill = GROUPE_SIGLE), stat = "count") +
+  theme_bw() +
+  scale_fill_manual(values = c("ECOLO" = "dark green",
+                               "GDR" = "dark red",
+                               "NI" = "grey",
+                               "RRDP" = "orange",
+                               "SRC" = "pink",
+                               "UDI" = "light blue",
+                               "UMP" = "dark blue"))
+
+# stocker les valeurs
+# scale_groupes <- scale_fill_manual(values = c("ECOLO" = "dark green",
+#                              "GDR" = "dark red",
+#                              "NI" = "grey",
+#                              "RRDP" = "orange",
+#                              "SRC" = "pink",
+#                              "UDI" = "light blue",
+#                              "UMP" = "dark blue"))
+
+source("./scale_groupes.R", local = TRUE)
+
+reserve %>% 
+  ggplot(aes(x = GROUPE_SIGLE)) +
+  geom_bar(aes(fill = GROUPE_SIGLE), stat = "count") +
+  theme_bw() +
+  scale_groupes
