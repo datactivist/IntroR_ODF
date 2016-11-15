@@ -31,7 +31,7 @@ Elle accompagne les supports de formation suivants :
 
 - les [slides de la première journée](./jour1.html)
 - les [slides de la deuxième journée](./jour2.html)
-- les [slides de la troisième journée](./jour2.html)
+- les [slides de la troisième journée](./jour3.html)
 - le [script R](https://github.com/datactivist/IntroR_ODF/blob/master/script.R) reprenant les principales manipulations de données effectuées durant ces trois jours.
 
 L'ensemble de ces matériaux peut être retrouvé sur le [repo github dédié](https://github.com/datactivist/IntroR_ODF).
