@@ -1,10 +1,10 @@
 # chargement des packages utiles
 
 library(tidyverse)
+library(stringr)
 
 # Chargement des données 
 
-# normalisePath ets utilisé pour que le chemin soit valable quel que soit le système d'exploitation (Win, MacOS, Unix)
 bvINSEE <- read_csv2("./data/bvINSEE2012.csv")
 # les identifiants des bureaux de vote sont codés différemment dans les deux jeux de données, on harmonise cela
 bvINSEE <- bvINSEE %>% 
@@ -106,7 +106,9 @@ plot(density(modele1$residuals))
 library(ggplot2)
 # fortify permet de transformer l'objet lm en dataframe utilisable par ggplot2
 ggmodele1 <- fortify(modele1)
-ggplot(modele1, aes(x=.resid)) + geom_density(color="blue") + theme_bw()
+ggplot(modele1, aes(x=.resid)) + 
+  geom_density(color="blue") + 
+  theme_bw()
 
 # ou encore les valeurs prédites (fitted values), par exemple 
 # on charge le fonds de carte de Marseille
