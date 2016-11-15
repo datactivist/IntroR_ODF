@@ -57,7 +57,7 @@ Ce formulaire sert de démonstration des usages potentiels de R.
 
 Comment connecter un simple formulaire Google Form, ses données récoltées dans un tableur et les visualiser très simplement avec des petits modules de graphes ou de cartes sur une page HTML construite automatiquement. 
 
-Le formateur a créé préalablement [un code R](./dashboard.Rmd) qui permet de visualiser en temps réel [un dashboard](./dashboard.html) qui présente les résultats. 
+Le formateur a créé préalablement [un code R](https://github.com/datactivist/IntroR_ODF/blob/master/dashboard.Rmd) qui permet de visualiser en temps réel [un dashboard](./dashboard.html) qui présente les résultats. 
 
 La force de R, c'est de permettre d'utiliser un code simple et concis (70 lignes dans ce cas). Il faut une heure à une heure et demi pour l'écrire.
 
@@ -144,7 +144,7 @@ La maîtrise de l'information est un élément essentiel du rapport au pouvoir (
 - Professionnellement
 - Personnellement, mouvement du [self data](http://mesinfos.fing.org/) : données pour reprise en main de certaines parties de sa vie. 
 
-![](./img/image_domaine_usages.png)
+[![](./img/image_domaine_usages.png)](http://mesinfos.fing.org/selfdata/)
 
 - Littératie de donnée 
 - En tant que citoyen, déconstruire les algorithmes et se réapproprier les données qui servent à la décision publique
@@ -975,7 +975,7 @@ reserve
        
 Stockage en format long (colonne) : 
 
-![](./img/tidy-9.png)
+[![](./img/tidy-9.png)](http://r4ds.had.co.nz/tidy-data.html#gathering)
 
 Dans ce cas, format long : les dates peuvent être spécifiées comme telles. Format large : les dates deviennent des variables.
 
