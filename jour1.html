@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Introduction à R</title>
+  <meta charset="utf-8">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="jour1_files/rmdshower/node_modules/shower-ribbon/styles/screen-4x3.css">
+  <link rel="stylesheet" href="jour1_files/rmdshower/style-common.css">
+  <link rel="stylesheet" href="jour1_files/rmdshower/style-ribbon.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.5.1/katex.min.js"></script>
+  <script src="jour1_files/rmdshower/auto-render.min.js" type="text/javascript"></script>
+  
+  
+  
+  
+  
+</head>
+
+<body class="shower list">
+
+  <header class="caption">
+    <h1>Introduction à R</h1>
+    <p>Open Data France et datactivi.st</p>
+  </header>
+
+    
+  
+<section id="introduction-a-r-le-couteau-suisse-de-la-data-science" class="slide level2">
+<h2>Introduction à R, le couteau suisse de la data science</h2>
+<p>
+</p>
+<p>
+</p>
+<p>
+</p>
+<p>
+Joël Gombin et Samuel Goëta (datactivi.st)
+</p>
+<p>
+Retrouvez les matériaux sur : <a href="www.github.com/datactivist/IntroR_ODF" class="uri">www.github.com/datactivist/IntroR_ODF</a>
+</p>
+<p>
+Pad collaboratif : <a href="https://frama.link/formationR_pad1" class="uri">https://frama.link/formationR_pad1</a>
+</p>
+</section>
+<section id="faisons-connaissance" class="slide level2">
+<h2>Faisons connaissance</h2>
+<p><a href="https://frama.link/formationR" class="uri">https://frama.link/formationR</a></p>
+</section>
+<section id="donnees-donnees" class="titleslide slide level1"><h2 class="shout">Données, données…</h2></section><section id="tentative-de-definition-de-la-donnee" class="slide level2">
+<h2>Tentative de définition de la donnée</h2>
+<ul>
+<li class="fragment next">c’est quoi une donnée pour vous ?</li>
+<li class="fragment next">ambiguïté de la notion de donnée</li>
+<li class="fragment next">datum/data</li>
+<li class="fragment next">pas de condition de véracité (Rosenberg, 2013)</li>
+<li class="fragment next">data / information / knowledge</li>
+</ul>
+</section><section id="open-data-big-data-linked-data" class="slide level2">
+<h2>Open data, big data, linked data…</h2>
+<iframe src="http://giphy.com/embed/TnuKaZxbMbHhK" width="480" height="319" frameBorder="0" class="giphy-embed" allowFullScreen>
+</iframe>
+<p>
+<a href="https://giphy.com/gifs/TnuKaZxbMbHhK">via GIPHY</a>
+</p>
+</section>
+<section id="pourquoi-sinteresser-a-lanalyse-des-donnees" class="titleslide slide level1"><h2 class="shout">Pourquoi s’intéresser à l’analyse des données ?</h2></section><section id="ca-nous-concerne" class="slide level2">
+<h2>Ça nous concerne :</h2>
+<p>professionnellement (open data, big data, analytics, gestion, KPIs, BI, données métier…)</p>
+</section><section id="ca-nous-concerne-1" class="slide level2">
+<h2>Ça nous concerne :</h2>
+<p>personnellement (<a href="http://mesinfos.fing.org/">self data</a>)</p>
+<p><img src="img/image_domaine_usages.png" width="487" height="90%" style="display: block; margin: auto;" /></p>
+</section><section id="ca-nous-concerne-2" class="slide level2">
+<h2>Ça nous concerne :</h2>
+<p>en tant que citoyen</p>
+</section><section id="pourquoi-sinteresser-a-lanalyse-des-donnees-1" class="slide level2">
+<h2>Pourquoi s’intéresser à l’analyse des données ?</h2>
+<p>Les données ne signifient rien à l’état brut. C’est un <em>modèle</em> qui permet de les interpréter, leur donner sens.</p>
+<p>Pas de modèle EST un modèle (implicite)</p>
+<p>Il faut donc expliciter nos modèles</p>
+</section><section id="pourquoi-sinteresser-a-lanalyse-des-donnees-2" class="slide level2">
+<h2>Pourquoi s’intéresser à l’analyse des données ?</h2>
+<p>S’initier à l’analyse des données, c’est :</p>
+<ul>
+<li class="fragment next">apprendre à expliciter ses modèles</li>
+<li class="fragment next">formuler les hypothèses sous-jacentes</li>
+<li class="fragment next">les tester</li>
+<li class="fragment next"><em>in fine</em>, appréhender ses données de manière moins naïve</li>
+</ul>
+</section><section id="pourquoi-sinteresser-a-lanalyse-des-donnees-3" class="slide level2">
+<h2>Pourquoi s’intéresser à l’analyse des données ?</h2>
+<p><img src="img/data-science-model.png" width="90%" style="display: block; margin: auto;" /></p>
+</section><section id="pourquoi-sinteresser-a-lanalyse-des-donnees-4" class="slide level2">
+<h2>Pourquoi s’intéresser à l’analyse des données ?</h2>
+<p>La data aujourd’hui, c’est le far west</p>
+<iframe src="http://giphy.com/embed/J14dxhoJLWlI4" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen>
+</iframe>
+<p>
+<a href="https://giphy.com/gifs/J14dxhoJLWlI4">via GIPHY</a>
+</p>
+</section><section id="pourquoi-sinteresser-a-lanalyse-des-donnees-5" class="slide level2">
+<h2>Pourquoi s’intéresser à l’analyse des données ?</h2>
+<p>Intéressez vous aux données avant que les données ne s’intéressent à vous</p>
+<p>“Data literacy”</p>
+</section>
+<section id="et-vous-pourquoi-ca-vous-interesse" class="titleslide slide level1"><h2 class="shout">Et vous, pourquoi ça vous intéresse ?</h2></section></section>
+<section id="lecosysteme-des-donnees" class="titleslide slide level1"><h2 class="shout">L’écosystème des données</h2></section><section id="quels-outils-utilisez-vous-connaissez-vous" class="slide level2">
+<h2>Quels outils utilisez-vous ? Connaissez-vous ?</h2>
+</section><section id="les-formats-de-donnees" class="slide level2">
+<h2>Les formats de données</h2>
+<iframe src="http://giphy.com/embed/jEEYJO9EgU5ig" width="480" height="265" frameBorder="0" class="giphy-embed" allowFullScreen>
+</iframe>
+<p>
+<a href="https://giphy.com/gifs/jEEYJO9EgU5ig">via GIPHY</a>
+</p>
+</section><section id="les-formats-de-donnees-1" class="slide level2">
+<h2>Les formats de données</h2>
+<ul>
+<li class="fragment next">tabulaires (voir <code>rio</code>)</li>
+<li class="fragment next">Excel / tableurs (.xls, .xlsx, .ods…)</li>
+<li class="fragment next">CSV, TSV, CSVY, PSV, FWF</li>
+<li class="fragment next">DataPackages</li>
+<li class="fragment next">feather</li>
+<li class="fragment next">…</li>
+</ul>
+</section><section id="les-formats-de-donnees-2" class="slide level2">
+<h2>Les formats de données</h2>
+<ul>
+<li class="fragment next">propriétaires logiciels stats</li>
+<li class="fragment next">.dta</li>
+<li class="fragment next">.sav, .por</li>
+<li class="fragment next">.dbf</li>
+<li class="fragment next">.sas7bdat, .xpt</li>
+<li class="fragment next">…</li>
+</ul>
+</section><section id="les-formats-de-donnees-3" class="slide level2">
+<h2>Les formats de données</h2>
+<ul>
+<li class="fragment next">plus exotiques</li>
+<li class="fragment next">XML</li>
+<li class="fragment next">HTML</li>
+<li class="fragment next">JSON</li>
+<li class="fragment next">YAML</li>
+<li class="fragment next">…</li>
+</ul>
+</section><section id="les-formats-de-donnees-4" class="slide level2">
+<h2>Les formats de données</h2>
+<ul>
+<li class="fragment next">formats spécialisés : l’exemple des données spatiales (voir <code>rgdal</code>: 132 formats !)</li>
+<li class="fragment next">shapefile</li>
+<li class="fragment next">geojson</li>
+<li class="fragment next">topojson</li>
+<li class="fragment next">kml</li>
+<li class="fragment next">mapinfo</li>
+<li class="fragment next">formats raster</li>
+<li class="fragment next">tiles</li>
+<li class="fragment next">…</li>
+</ul>
+</section><section id="les-bases-de-donnees" class="slide level2">
+<h2>Les bases de données</h2>
+<ul>
+<li class="fragment next">relationnelles / SQL</li>
+<li class="fragment next">MySQL</li>
+<li class="fragment next">SQLite</li>
+<li class="fragment next">PostgreSQL</li>
+<li class="fragment next">…</li>
+</ul>
+</section><section id="les-bases-de-donnees-1" class="slide level2">
+<h2>Les bases de données</h2>
+<ul>
+<li class="fragment next">SQL orientées colonnes</li>
+<li class="fragment next">MonetDB / MonetDBLite</li>
+<li class="fragment next">…</li>
+</ul>
+</section><section id="les-bases-de-donnees-2" class="slide level2">
+<h2>Les bases de données</h2>
+<ul>
+<li class="fragment next">NoSQL</li>
+<li class="fragment next">MangoDB</li>
+<li class="fragment next">Cassandra</li>
+<li class="fragment next">CouchDB</li>
+<li class="fragment next">SimpleDB</li>
+<li class="fragment next">BigTable</li>
+<li class="fragment next">HBase</li>
+<li class="fragment next">Neo4J</li>
+<li class="fragment next">Redis</li>
+<li class="fragment next">…</li>
+</ul>
+</section><section id="les-outils" class="slide level2">
+<h2>Les outils</h2>
+<ul>
+<li class="fragment next">Celui que vous avez sûrement déjà utilisé : Excel / LibreOffice / un tableur</li>
+<li class="fragment next">avantages</li>
+<li class="fragment next"><p>inconvénients</p></li>
+<li class="fragment next">GUI</li>
+<li class="fragment next">Sphinx</li>
+<li class="fragment next">SPSS</li>
+<li class="fragment next">SAS</li>
+<li class="fragment next">OpenRefine</li>
+<li class="fragment next">WTF CSV</li>
+<li class="fragment next">Tableau</li>
+<li class="fragment next"><p>…</p></li>
+</ul>
+</section><section id="les-outils-1" class="slide level2">
+<h2>Les outils</h2>
+<ul>
+<li class="fragment next">CLI</li>
+<li class="fragment next">Python</li>
+<li class="fragment next">Julia</li>
+<li class="fragment next">R</li>
+<li class="fragment next">C/C++</li>
+<li class="fragment next">Java</li>
+<li class="fragment next">Javascript</li>
+<li class="fragment next">outils bash</li>
+<li class="fragment next">…</li>
+</ul>
+</section><section id="les-outils-2" class="slide level2">
+<h2>Les outils</h2>
+<ul>
+<li class="fragment next">sans compter les outils spécialisés. Exemple de la cartographe :</li>
+<li class="fragment next">QGIS</li>
+<li class="fragment next">PhilCarto</li>
+<li class="fragment next">MapInfo</li>
+<li class="fragment next">ArcGIS</li>
+<li class="fragment next">Umap</li>
+<li class="fragment next">leaflet</li>
+<li class="fragment next">….</li>
+</ul>
+</section><section id="les-infrastructures" class="slide level2">
+<h2>Les infrastructures</h2>
+<ul>
+<li class="fragment next">Notamment dans le “big data” :</li>
+<li class="fragment next">Hadoop</li>
+<li class="fragment next">Spark</li>
+<li class="fragment next">H20</li>
+<li class="fragment next">etc. etc.</li>
+</ul>
+</section><section id="one-tool-to-rule-them-all" class="slide level2">
+<h2>One tool to rule them all</h2>
+<ul>
+<li class="fragment next">R a comme avantage d’être un langage de programmation (= potentiel illimité) pensé exprès pour la manipulation des données</li>
+<li class="fragment next">au fil du temps, devenu un “general purpose tool”</li>
+<li class="fragment next">permet d’interfacer de nombreux outils plus spécialisés</li>
+<li class="fragment next">une communauté très dynamique</li>
+<li class="fragment next">une syntaxe de plus en plus facile</li>
+<li class="fragment next">des progrès vers des bouts de GUI</li>
+</ul>
+</section>
+<section id="cest-quoi-tes-donnees" class="titleslide slide level1"><h2 class="shout">C’est quoi tes données ?</h2></section><section id="sur-quelles-donnees-voulez-vous-travailler" class="slide level2">
+<h2>Sur quelles données voulez-vous travailler ?</h2>
+<ul>
+<li class="fragment next">domaine</li>
+<li class="fragment next">format</li>
+<li class="fragment next">taille (lignes / variables)</li>
+<li class="fragment next">granularité</li>
+<li class="fragment next">fraicheur</li>
+<li class="fragment next">quelle analyse</li>
+<li class="fragment next">etc.</li>
+</ul>
+</section><section id="installation-de-r-et-rstudio" class="slide level2">
+<h2>Installation de R et Rstudio</h2>
+</section><section id="prise-en-main-du-logiciel" class="slide level2">
+<h2>Prise en main du logiciel</h2>
+</section>
+
+  <!--
+  To hide progress bar from entire presentation
+  just remove “progress” element.
+  -->
+  <!-- <div class="progress"></div> -->
+  <script src="jour1_files/rmdshower/node_modules/shower/node_modules/shower-core/shower.min.js"></script>
+  <!-- Copyright © 2015 Yours Truly, Famous Inc. -->
+  <!-- Photos by John Carey, fiftyfootshadows.net -->
+
+    <script>renderMathInElement(document.body);</script>
+  
+  
+</body>
+</html>
