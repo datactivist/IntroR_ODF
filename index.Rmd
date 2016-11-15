@@ -23,6 +23,20 @@ opts_chunk$set(echo=TRUE,
 opts_knit$set(width=75)
 ```
 
+# Préambule
+
+Cette documentation est le fruit d'un travail collaboratif, réalisé par les participants à [la formation organisée par Open Data France et datactivi.st](http://www.datactivi.st/formation.html). Un grand merci à eux !
+
+Elle accompagne les supports de formation suivants :
+
+- les [slides de la première journée](./jour1.html)
+- les [slides de la deuxième journée](./jour2.html)
+- les [slides de la troisième journée](./jour2.html)
+- le [script R](https://github.com/datactivist/IntroR_ODF/blob/master/script.R) reprenant les principales manipulations de données effectuées durant ces trois jours.
+
+L'ensemble de ces matériaux peut être retrouvé sur le [repo github dédié](https://github.com/datactivist/IntroR_ODF).
+
+L'ensemble de ces matériaux est placé, sauf mention contraire, sous [licence Creative Commons CC-BY-SA](https://creativecommons.org/licenses/by-sa/4.0/).
 
 # Les matériaux nécessaires pour cette formation
 
