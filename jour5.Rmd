@@ -1,0 +1,163 @@
+---
+title: "Introduction à R"
+author: Open Data France et datactivi.st
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+    self_contained: false 
+    katex: true
+    theme: ribbon
+    incremental: true
+    css: presentations.css
+---
+
+## Introduction à R, le couteau suisse de la data science 
+
+
+<p></p>
+<p></p>
+Jour 4
+<p></p><p></p><p>
+Joël Gombin et Samuel Goëta (datactivi.st)
+</p>
+<p>
+Retrouvez les matériaux sur : [www.github.com/datactivist/IntroR_ODF](www.github.com/datactivist/IntroR_ODF)
+</p>
+
+<p>
+Pad collaboratif : https://frama.link/formationR_pad4
+</p>
+
+## Ce qu'on a déjà appris 
+
+- l'écosystème dans lequel s'inscrit R
+- importer des données
+- préparer des *tidy data*
+- transformer les données
+- fusionner des jeux de données
+- pivoter un je de données
+- agréger un jeu de données
+- visualiser des données
+
+## Ce qu'on a déjà appris 
+
+```{r, echo = FALSE, out.width='90%', fig.align='center'}
+knitr::include_graphics("./img/data-science-model.png")
+```
+
+## Objectifs de la journée
+
+- Appréhender la notion de modélisation
+- La replacer dans un contexte plus large (machine learning ? Big data ?)
+- Construire et analyser un modèle linéaire
+- Construire et analyser un modèle logistique
+
+# Pourquoi modéliser ? Qu'est-ce que modéliser ?
+
+## Pourquoi modéliser ?
+
+![largeur](./img/Hibbs.jpg)
+
+## Pourquoi modéliser ?
+
+- pour analyser et expliquer
+- pour prédire
+
+## Modéliser pour analyser
+
+- un modèle réduit de la réalité
+- isoler le rôle de chaque variable
+- raisonner "toutes choses égales par ailleurs"
+
+## Modéliser pour analyser
+
+Modéliser, c’est mettre en relation une *variable expliquée*
+(dépendante / prédite) et une ou plusieurs *variables explicatives*
+(indépendantes / prédicteurs).
+
+*Y* = *f*(*X~1~*, *X~2~*, *X~3~*, ..., *X~n~*)
+
+L’estimation du modèle consiste à estimer la valeur des paramètres
+(ou coefficients).
+
+*Y* = *α* + *β~1~X~1~* + *β~2~X~2~* + *β~3~X~3~* + · · · + *β~n~X~n~* + *ε*
+
+## Modéliser pour analyser
+
+Exemple : on s’intéresse au vote FN à Marseille, par bureau de vote,
+lors des élections municipales de 2014, en fonction de la sociologie
+des bureaux de vote.
+
+Vote FN = *f*(Composition socioprofessionnelle, population étrangère, taux de chômage, locataires HLM)
+
+## Modéliser pour analyser
+
+Hypothèses :
+
+- Classes populaires : positivement associées au vote FN
+- Population étrangère : positivement associée au vote FN
+- Taux de chômage : positivement associé au vote FN
+- Locataires HLM : positivement associé au vote FN
+
+## Modéliser pour prédire
+
+[![largeur](./img/NateSilver.png)](http://projects.fivethirtyeight.com/2016-election-forecast/#plus)
+
+## Attention !
+
+- Les modèles de régression linéaire supposent que les relations
+sont *linéaires* et *additives*.
+- Les *résidus* sont supposés être *normalement distribués*.
+- Les coefficients ne sont *pas standardisés* (on ne peut les
+comparer entre eux).
+- Les coefficients s’interprètent *relativement à l’unité de la variable dépendante*.
+
+## Attention !
+
+- Les coefficients estiment l’effet d’une variable indépendante
+sur la variable dépendante *toutes choses égales par ailleurs*,
+c’est-à-dire en neutralisant l’effet des autres variables.
+
+- La qualité globale du modèle peut être quantifié au travers du
+*R^2^* , qui représente la part de variance (de la variable
+dépendante) expliquée.
+
+- Pour les variables indépendantes catégoriques, on estime un
+coefficient par modalité, à l’exception de la première
+(baseline).
+
+# Modèles linéaires sous R
+
+## La fonction `lm` 
+
+La fonction `lm` permet d’estimer des *linear models*.
+Elle nécessite simplement le modèle, sous forme d’une formule, et
+un dataframe.
+
+```{r eval=FALSE, echo=TRUE}
+
+modele1 <- lm(y ~ x1 + x2, data = data)
+
+```
+
+`lm` permet également d’estimer des modèles pondérés (argument
+`weights`) ou portant sur un sous-ensemble du jeu de données
+(argument `subset`).
+
+## `modelr` et `broom`
+
+`modelr` => permet de manipler des modèles avec le pipe
+
+- `add_predictions` (avec `data_grid`, `gather_predictions` et `spread_predictions`)
+- `add_residuals` (avec `gather_residuels` et `spread_residuals`)
+
+`broom` permet de gérer de nombreux modèles à la fois
+
+# Modèles généralisés
+
+## Modèles logistiques
+
+# Et le machine learning ?
+
+## Machine learning et modélisation
+
