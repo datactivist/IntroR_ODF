@@ -167,11 +167,9 @@ De plus en plus : Google Maps, Open Street Map, Stamen...
 
 ##
 
-<iframe src='https://maps.stamen.com/toner/#12/48.8974/2.2017' width='800' height='600'></iframe>
+http://maps.stamen.com/toner/#12/48.8974/2.2017
 
-##
-
-<iframe src='https://maps.stamen.com/watercolor/#12/48.8974/2.2017' width='800' height='600'></iframe>
+http://maps.stamen.com/watercolor/#12/48.8974/2.2017
 
 ## Vecteur ou raster 
 
