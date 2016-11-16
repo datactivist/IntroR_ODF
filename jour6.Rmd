@@ -430,5 +430,6 @@ Mais aussi grâce au package `mapview` :
 ```{r message=FALSE, warning=FALSE}
 library(mapview)
 mapview(departements)
+mapview(departements, zcol = "CODE_REG")
 ```
 
