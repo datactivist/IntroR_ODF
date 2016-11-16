@@ -97,6 +97,8 @@ library(texreg)
 # l'option single.row permet de faire tenir le coefficient et son erreur-type sur la même ligne
 screenreg(modele1)
 
+# afficher des intervalles de confiance, par défaut à 95 %, plutôt que des erreurs standard
+screenreg(modele1, ci.force = TRUE)
 
 # on peut ensuite analyser un élément donné du modèle, par exemple les résidus
 
