@@ -11,7 +11,7 @@ incremental: true
 css: presentations.css
 ---
   
-  ## Introduction à R, le couteau suisse de la data science 
+## Introduction à R, le couteau suisse de la data science 
   
   
   <p></p>
