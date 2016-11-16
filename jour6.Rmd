@@ -185,7 +185,7 @@ Comment stocker et représenter l'information géographique ?
 
 ## 
 
-<iframe src='https://www.comeetie.fr/galerie/francepixels/#' width="800" height="600"></iframe><br/><small><a href="http://www.comeetie.fr/galerie/francepixels/#">Voir la source</a></small>
+http://www.comeetie.fr/galerie/francepixels/#
 
 ## Cartes choroplèthes 
 
