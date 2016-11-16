@@ -1,0 +1,107 @@
+---
+title: "Introduction à R"
+author: Open Data France et datactivi.st
+ratio: 16x10
+output:
+  rmdshower::shower_presentation:
+  self_contained: false 
+katex: true
+theme: ribbon
+incremental: true
+css: presentations.css
+---
+  
+  ## Introduction à R, le couteau suisse de la data science 
+  
+  
+  <p></p>
+  <p></p>
+  Jour 6
+<p></p><p></p><p>
+  Joël Gombin et Samuel Goëta (datactivi.st)
+</p>
+  <p>
+  Retrouvez les matériaux sur : [www.github.com/datactivist/IntroR_ODF](www.github.com/datactivist/IntroR_ODF)
+</p>
+  
+  <p>
+  Pad collaboratif : https://frama.link/formationR_pad4
+</p>
+  
+## Ce qu'on a déjà appris 
+  
+- l'écosystème dans lequel s'inscrit R
+- importer des données
+- préparer des *tidy data*
+- transformer les données
+- fusionner des jeux de données
+- pivoter un je de données
+- agréger un jeu de données
+- visualiser des données
+- modéliser des données
+
+## Ce qu'on a déjà appris 
+
+```{r, echo = FALSE, out.width='90%', fig.align='center'}
+knitr::include_graphics("./img/data-science-model.png")
+```
+
+## Consolidation des acquis
+
+Exercice : importer un jeu de données, le nettoyer/préparer, représenter graphiquement la relation entre trois variables, la tester dans le cadre d'un modèle
+
+# Un exemple
+
+## R, un potentiel cartographique énorme
+
+http://joelgombin.github.io/makingof.html
+
+## Des avantages
+
+- un workflow intégré
+- un workflow reproductible
+- une convergence des paradigmes de carto "statique" (print) et "dynamique" (web)
+- l'intégration dans des apps : http://shiny.rstudio.com/gallery/superzip-example.html
+
+## Quelques pistes/ressources
+
+- des capacités de base grâce à `sp`
+- des capacités SIG grâce à `maptools`, `rgdal` et `rgeos`
+- des packages de cartographie de haut niveau : `cartography` et `tmap` 
+- des packages de cartographie interactive/web : `leaflet`, `mapview`, 
+
+# Notions de cartographie 
+
+## Qu'est-ce qu'une carte ? 
+
+"Une carte est une représentation géométrique plane simplifiée et conventionnelle de tout ou partie de la surface terrestre, et cela dans un rapport de similitude convenable qu'on appelle échelle." (F. Joly, 1976)
+
+
+Référence : [Béguin et Pumain, 2014 (3e éd.)](http://www.persee.fr/web/revues/home/prescript/article/espos_0755-7809_1998_num_16_1_1827_t1_0119_0000_2)
+
+## La notion de projection 
+
+La projection est l'outil mathématique qui permet de passer du géoïde représentant la Terre à une représentation plane. 
+
+Projections conformes (Mercator, Lambert) ou équivalentes (Eckert IV, Gall). Il y a toujours une déformation !
+
+Les coordonnées géographiques sont exprimées en longitude et latitude. Les unités peuvent être des degrés ou des grades. La projection transforme les coordonnées géographiques en coordonnées x/y. 
+
+## La notion de projection 
+
+Exemple de coordonnées géographiques :
+
+![largeur](./img/gmaps.png)
+
+## La notion de projection 
+
+Un truc cool pour jouer avec les différentes projections :
+
+<iframe width='1000' height='600' src='https://bl.ocks.org/mbostock/raw/3711652/'></iframe>
+
+## La notion de projection 
+
+_The West Wing_, la série qui arrive à faire un sketch drôle sur les projections géographiques :
+
+<iframe width="560" height="315" src="http://www.youtube.com/embed/vVX-PrBRtTY" frameborder="0" allowfullscreen></iframe>
+
