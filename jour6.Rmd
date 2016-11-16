@@ -263,7 +263,7 @@ Un exemple d'utilisation incorrecte (non-proportionnelle) de la taille :
   
 ## La couleur
 
-<iframe src='https://hslpicker.com/' width='800px' height='500px'></iframe>
+http://hslpicker.com/
 
 ## La couleur
 
@@ -290,3 +290,145 @@ Un exemple d'utilisation incorrecte (non-proportionnelle) de la taille :
 - Des palettes de couleur de référence : [colorbrewer2.org](http://colorbrewer2.org/) par exemple
 - Un autre outil de construction de palette de couleur : [vis4.net/labs/multihue](https://vis4.net/labs/multihue/)
 - C'est la variable qu'on utilise le plus en cartographie thématique.
+
+## La valeur 
+
+- Valeur : rapport entre quantités totales de noir et de blanc perçues dans une surface donnée (cf. aussi "gris typographique"). 
+- Peut passer par une trame 
+- Peut concerner une couleur (un ton)
+- En général, on utilise des classes (max 6/7)
+- Mais parfois, coloration continue
+
+## La valeur 
+
+Un exemple de coloration continue :
+
+![largeur](./img/continue.jpg)
+
+##
+
+Des cartes _old school_ de densité, qui utilisent une trame :
+
+![largeur](./img/densite.jpg)
+
+##
+
+Une autre coloration continue (pas très lisible parce qu'elle utilise trop de teintes [hues]) :
+
+![largeur](./img/Purple-USA.jpg)
+
+## Le grain 
+
+- agrandissement ou réduction d'une texture/structure
+- pas très utilisé, car mal perçu par l'œil humain
+
+## L'orientation 
+
+- Angle d'un figuré linéaire
+- Pour variable qualitative, moins utilisé aujourd'hui
+
+## L'orientation 
+
+Un exemple d'utilisation par Todd et Le Bras :
+
+![largeur](./img/lebrastodd.jpg)
+
+## Distribution et découpage en classes des variables quantitatives 
+
+- discrétisation : découper une variable continue en classes
+- ce découpage n'est pas neutre, et ne peut être décidé indépendamment de la distribution de la variable représentée
+
+## Distribution et découpage en classes des variables quantitatives 
+
+Voir [cet article](http://www.persee.fr/web/revues/home/prescript/article/espos_0755-7809_2000_num_18_1_1930)
+
+Un [moyen sympa](http://franceo3.geoclip.fr/index.php?profil=FV#z=-349737,6562730,1033057,513716;l=fr;i=euro14.pt_lfn;v=map12) de jouer avec les différentes méthodes de discrétisation.
+
+## Et concrètement, on fait comment ?
+
+De très nombreux outils existent. QGIS est en train de s'imposer comme le SIG de référence dans le monde du libre. Malheureusement, en cartographie pure, aucune solution de référence ne permet de traiter aisément tous les cas de figure (vectoriel/raster ; print/web, etc.). En ce qui concerne la carto web, pas vraiment de solution de référence pour l'heure. 
+
+R n'est pas fait (du tout) au départ pour faire de la carto, mais offre aujourd'hui un _workflow_ complet allant du nettoyage des données à leur représentation cartographique en passant par le nettoyage, l'analyse et la transformation des données.
+
+# R et les données spatiales
+
+## Un objet spatial, c'est quoi ?
+
+- une collection de géométries (points, lignes, polygones), regroupées en couches (layers)
+- une table attributaire (des données)
+- un identifiant unique pour faire le lien entre les deux !
+- si les choses sont bien faites, une projection.
+
+## Formats spatiaux
+
+- le plus répandu, la référence : le shapefile (format défini par ESRI). Pose pas mal de problèmes : plusieurs fichiers (.shp, .dbf., .prj, .shx, etc.) ; nom des variables limité à 10 caractères ; pas de valeurs manquantes ; pas plus de 255 variables ; pas de fichiers de plus de 2GB...  
+- le format promu par Google : le KML
+- le nouveau standard de facto en ligne : GeoJSON
+- une version améliorée et topologique du GeoJSON : le topoJSON
+- etc. etc. 
+
+Il existe des outils libres pour passer d'un format à l'autre, en particulier OGR/GDAL. R possède des surcouches de ces librairies. 
+
+## Et dans R ?
+
+Plusieurs classes dans R pour représenter les objets spatiaux. La plus importante (et le seul qu'on utilisera) provient de la librairie `sp` et est `SpatialPolygonsDataFrame` (il existe aussi `SpatialPoints*` et `SpatialLines*`). 
+
+On peut créer un objet `SpatialPolygonsDataFrame` à la main, mais en réalité on ne le fait jamais, on importe un shapefile (ou autre) dans R. Plusieurs fonctions pour cela ; la meilleure est `readOGR`, dans le package `rgdal`.
+
+```{r message=FALSE, warning=FALSE}
+#install.packages("sp")
+#install.packages("rgdal")
+
+library(sp)
+library(rgdal)
+
+departements <- readOGR("./data/departements", "DEPARTEMENT", stringsAsFactors = FALSE)
+summary(departements)
+```
+
+## Et dans R ?
+
+Les objets `SpatialPolygonsDataFrame` sont complexes, mais comprennent pour simplifier d'une part les polygones (auxquels on accède directement : `departements[1,]`) et d'autre part le `dataframe`, qui est un `slot` de l'objet :
+
+```{r message=FALSE, warning=FALSE}
+summary(departements@data)
+library(tidyverse)
+departements@data %>%
+  filter(NOM_REGION %in% "ILE-DE-FRANCE")
+```
+
+## Et dans R ?
+
+On peut ainsi sélectionner une partie seulement d'un `SpatialPolygonsDataFrame`, en fonction de données de la table attributaire. 
+
+Nouveau package pour utiliser la syntaxe du `tidyverse` avec `sp` : https://cran.r-project.org/web/packages/spdplyr/vignettes/spdplyr.html
+
+```{r message=FALSE, warning=FALSE}
+library(spdplyr)
+iledefrance <- departements %>% 
+  filter(NOM_REGION %in% "ILE-DE-FRANCE")
+
+````
+
+## Et dans R ?
+
+On peut aisément visualiser les objets spatiaux au moyen de la fonction `plot` :
+
+```{r message=FALSE, warning=FALSE}
+plot(departements)
+
+## ou :
+## departements %>% plot()
+
+```
+
+## Et dans R ?
+
+Mais aussi grâce au package `mapview` :
+
+
+```{r message=FALSE, warning=FALSE}
+library(mapview)
+mapview(departements)
+```
+
