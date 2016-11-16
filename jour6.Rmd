@@ -183,11 +183,11 @@ Comment stocker et représenter l'information géographique ?
 ## 
 
 
-<iframe width="800" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="http://www.openstreetmap.org/export/embed.html?bbox=2.3314136266708374%2C48.866987337550164%2C2.33908474445343%2C48.87019135286425&amp;layer=transportmap" style="border: 1px solid black"></iframe>
+<iframe width="800" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=2.3314136266708374%2C48.866987337550164%2C2.33908474445343%2C48.87019135286425&amp;layer=transportmap" style="border: 1px solid black"></iframe>
 
 ## 
 
-<iframe src='http://www.comeetie.fr/galerie/francepixels/#' width="800" height="600"></iframe><br/><small><a href="http://www.comeetie.fr/galerie/francepixels/#">Voir la source</a></small>
+<iframe src='https://www.comeetie.fr/galerie/francepixels/#' width="800" height="600"></iframe><br/><small><a href="http://www.comeetie.fr/galerie/francepixels/#">Voir la source</a></small>
 
 ## Cartes choroplèthes 
 
@@ -265,7 +265,7 @@ Un exemple d'utilisation incorrecte (non-proportionnelle) de la taille :
   
 ## La couleur
 
-<iframe src='http://hslpicker.com/' width='800px' height='500px'></iframe>
+<iframe src='https://hslpicker.com/' width='800px' height='500px'></iframe>
 
 ## La couleur
 
