@@ -1,0 +1,378 @@
+<!doctype HTML>
+<meta charset = 'utf-8'>
+<html>
+  <head>
+    
+    <script src='http://d3js.org/d3.v3.min.js' type='text/javascript'></script>
+    <script src='http://d3js.org/topojson.v1.min.js' type='text/javascript'></script>
+    <script src='http://datamaps.github.io/scripts/datamaps.all.min.js' type='text/javascript'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js' type='text/javascript'></script>
+    
+    <style>
+    .rChart {
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      width: 460px;
+      height: 460px;
+    }  
+    </style>
+    
+  </head>
+  <body>
+    <div id='charta047ce7017e' class='rChart datamaps'></div>  
+    
+    <script id='popup-template' type='text/x-handlebars-template'>
+    
+</script>
+<script>
+  var chartParams = {
+ "dom": "charta047ce7017e",
+"width":    460,
+"height":    460,
+"geographyConfig": {
+ "dataUrl": "./amiensSHP.json",
+"borderWidth":    0.1,
+"popupTemplate":  function(geography, data) { //this function should just return a string
+                             return '<div class=hoverinfo><strong>' + 'Bureau(x) de vote :' + geography.properties.BV + '<BR>Progression du FN 2012-2014: ' + geography.properties.ProgFN + '</strong></div>';
+}   
+},
+"scope": "amiensSHP",
+"setProjection":  function( element, options ) {
+    var projection, path;
+    path = d3.geo.path()
+    .projection(null);
+    
+    return {path: path, projection: projection};
+} ,
+"fills": {
+ "(-14,-12]": "#B2182B",
+"(-12,-10]": "#EF8A62",
+"(-10,-8]": "#FDDBC7",
+"(-8,-6]": "#F7F7F7",
+"(-6,-4]": "#D1E5F0",
+"(-4,-2]": "#67A9CF",
+"(-2,0]": "#2166AC",
+"defaultFill": "grey" 
+},
+"data": {
+ "80021001": {
+ "CodeBV": "80021001",
+"fillKey": "(-4,-2]" 
+},
+"80021002": {
+ "CodeBV": "80021002",
+"fillKey": "(-4,-2]" 
+},
+"80021003": {
+ "CodeBV": "80021003",
+"fillKey": "(-4,-2]" 
+},
+"80021004": {
+ "CodeBV": "80021004",
+"fillKey": "(-6,-4]" 
+},
+"80021005": {
+ "CodeBV": "80021005",
+"fillKey": "(-2,0]" 
+},
+"80021006": {
+ "CodeBV": "80021006",
+"fillKey": "(-8,-6]" 
+},
+"80021007": {
+ "CodeBV": "80021007",
+"fillKey": "(-4,-2]" 
+},
+"80021008": {
+ "CodeBV": "80021008",
+"fillKey": "(-2,0]" 
+},
+"80021009": {
+ "CodeBV": "80021009",
+"fillKey": "(-4,-2]" 
+},
+"80021010": {
+ "CodeBV": "80021010",
+"fillKey": "(-2,0]" 
+},
+"80021011": {
+ "CodeBV": "80021011",
+"fillKey": "(-4,-2]" 
+},
+"80021012": {
+ "CodeBV": "80021012",
+"fillKey": "(-6,-4]" 
+},
+"80021013": {
+ "CodeBV": "80021013",
+"fillKey": "(-6,-4]" 
+},
+"80021014": {
+ "CodeBV": "80021014",
+"fillKey": "(-2,0]" 
+},
+"80021015": {
+ "CodeBV": "80021015",
+"fillKey": "(-4,-2]" 
+},
+"80021016": {
+ "CodeBV": "80021016",
+"fillKey": "(-2,0]" 
+},
+"80021017": {
+ "CodeBV": "80021017",
+"fillKey": "(-2,0]" 
+},
+"80021018": {
+ "CodeBV": "80021018",
+"fillKey": "(-6,-4]" 
+},
+"80021019": {
+ "CodeBV": "80021019",
+"fillKey": "(-8,-6]" 
+},
+"80021020": {
+ "CodeBV": "80021020",
+"fillKey": "(-4,-2]" 
+},
+"80021021": {
+ "CodeBV": "80021021",
+"fillKey": "(-8,-6]" 
+},
+"80021022": {
+ "CodeBV": "80021022",
+"fillKey": "(-10,-8]" 
+},
+"80021023": {
+ "CodeBV": "80021023",
+"fillKey": "(-6,-4]" 
+},
+"80021024": {
+ "CodeBV": "80021024",
+"fillKey": "(-8,-6]" 
+},
+"80021025": {
+ "CodeBV": "80021025",
+"fillKey": "(-4,-2]" 
+},
+"80021026": {
+ "CodeBV": "80021026",
+"fillKey": "(-2,0]" 
+},
+"80021027": {
+ "CodeBV": "80021027",
+"fillKey": "(-8,-6]" 
+},
+"80021028": {
+ "CodeBV": "80021028",
+"fillKey": "(-6,-4]" 
+},
+"80021029": {
+ "CodeBV": "80021029",
+"fillKey": "(-12,-10]" 
+},
+"80021030": {
+ "CodeBV": "80021030",
+"fillKey": "(-4,-2]" 
+},
+"80021031": {
+ "CodeBV": "80021031",
+"fillKey": "(-6,-4]" 
+},
+"80021032": {
+ "CodeBV": "80021032",
+"fillKey": "(-4,-2]" 
+},
+"80021033": {
+ "CodeBV": "80021033",
+"fillKey": "(-4,-2]" 
+},
+"80021034": {
+ "CodeBV": "80021034",
+"fillKey": "(-2,0]" 
+},
+"80021035": {
+ "CodeBV": "80021035",
+"fillKey": "(-8,-6]" 
+},
+"80021036": {
+ "CodeBV": "80021036",
+"fillKey": "(-4,-2]" 
+},
+"80021037": {
+ "CodeBV": "80021037",
+"fillKey": "(-6,-4]" 
+},
+"80021038": {
+ "CodeBV": "80021038",
+"fillKey": "(-8,-6]" 
+},
+"80021039": {
+ "CodeBV": "80021039",
+"fillKey": "(-8,-6]" 
+},
+"80021040": {
+ "CodeBV": "80021040",
+"fillKey": "(-6,-4]" 
+},
+"80021041": {
+ "CodeBV": "80021041",
+"fillKey": "(-4,-2]" 
+},
+"80021042": {
+ "CodeBV": "80021042",
+"fillKey": "(-4,-2]" 
+},
+"80021043": {
+ "CodeBV": "80021043",
+"fillKey": "(-8,-6]" 
+},
+"80021044": {
+ "CodeBV": "80021044",
+"fillKey": "(-8,-6]" 
+},
+"80021045": {
+ "CodeBV": "80021045",
+"fillKey": "(-6,-4]" 
+},
+"80021046": {
+ "CodeBV": "80021046",
+"fillKey": "(-6,-4]" 
+},
+"80021047": {
+ "CodeBV": "80021047",
+"fillKey": "(-6,-4]" 
+},
+"80021048": {
+ "CodeBV": "80021048",
+"fillKey": "(-6,-4]" 
+},
+"80021049": {
+ "CodeBV": "80021049",
+"fillKey": "(-8,-6]" 
+},
+"80021050": {
+ "CodeBV": "80021050",
+"fillKey": "(-4,-2]" 
+},
+"80021051": {
+ "CodeBV": "80021051",
+"fillKey": "(-4,-2]" 
+},
+"80021052": {
+ "CodeBV": "80021052",
+"fillKey": "(-4,-2]" 
+},
+"80021053": {
+ "CodeBV": "80021053",
+"fillKey": "(-4,-2]" 
+},
+"80021054": {
+ "CodeBV": "80021054",
+"fillKey": "(-4,-2]" 
+},
+"80021055": {
+ "CodeBV": "80021055",
+"fillKey": "(-6,-4]" 
+},
+"80021056": {
+ "CodeBV": "80021056",
+"fillKey": "(-4,-2]" 
+},
+"80021057": {
+ "CodeBV": "80021057",
+"fillKey": "(-6,-4]" 
+},
+"80021058": {
+ "CodeBV": "80021058",
+"fillKey": "(-4,-2]" 
+},
+"80021059": {
+ "CodeBV": "80021059",
+"fillKey": "(-4,-2]" 
+},
+"80021060": {
+ "CodeBV": "80021060",
+"fillKey": "(-6,-4]" 
+},
+"80021061": {
+ "CodeBV": "80021061",
+"fillKey": "(-14,-12]" 
+},
+"80021062": {
+ "CodeBV": "80021062",
+"fillKey": "(-6,-4]" 
+},
+"80021063": {
+ "CodeBV": "80021063",
+"fillKey": "(-6,-4]" 
+},
+"80021064": {
+ "CodeBV": "80021064",
+"fillKey": "(-8,-6]" 
+},
+"80021065": {
+ "CodeBV": "80021065",
+"fillKey": "(-8,-6]" 
+},
+"80021066": {
+ "CodeBV": "80021066",
+"fillKey": "(-6,-4]" 
+},
+"80021067": {
+ "CodeBV": "80021067",
+"fillKey": "(-2,0]" 
+},
+"80021068": {
+ "CodeBV": "80021068",
+"fillKey": "(-6,-4]" 
+},
+"80021069": {
+ "CodeBV": "80021069",
+"fillKey": "(-10,-8]" 
+},
+"80021070": {
+ "CodeBV": "80021070",
+"fillKey": "(-10,-8]" 
+},
+"80021071": {
+ "CodeBV": "80021071",
+"fillKey": "(-6,-4]" 
+} 
+},
+"legend": true,
+"labels": true,
+"id": "charta047ce7017e" 
+}
+  chartParams.element = document.getElementById('charta047ce7017e')
+  
+  
+  var mapcharta047ce7017e = new Datamap(chartParams);
+               mapcharta047ce7017e.legend();
+  
+  
+    
+  // draw a bubble map if specified
+  if (chartParams.bubbles) {
+    var bubbles = chartParams.bubbles
+    mapcharta047ce7017e.bubbles(bubbles.data, bubbles.config)
+  }
+</script>
+
+<style>
+.datamaps {
+  position: relative;
+}
+</style>
+    
+<style>
+               .land {
+               fill: #FAFAFA ;
+               stroke-width: 0.5px;
+               stroke: #BDBDBD !important;
+               pointer-events: none;
+               }
+               </style>
+               </body>
+</html>

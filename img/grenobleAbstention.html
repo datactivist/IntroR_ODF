@@ -1,0 +1,438 @@
+<!doctype HTML>
+<meta charset = 'utf-8'>
+<html>
+  <head>
+    
+    <script src='http://d3js.org/d3.v3.min.js' type='text/javascript'></script>
+    <script src='http://d3js.org/topojson.v1.min.js' type='text/javascript'></script>
+    <script src='http://datamaps.github.io/scripts/datamaps.all.min.js' type='text/javascript'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/handlebars.js/1.0.0/handlebars.min.js' type='text/javascript'></script>
+    
+    <style>
+    .rChart {
+      display: block;
+      margin-left: auto; 
+      margin-right: auto;
+      width: 460px;
+      height: 460px;
+    }  
+    </style>
+    
+  </head>
+  <body>
+    <div id='chart3a335645a8bc' class='rChart datamaps'></div>  
+    
+    <script id='popup-template' type='text/x-handlebars-template'>
+    
+</script>
+<script>
+  var chartParams = {
+ "dom": "chart3a335645a8bc",
+"width":    460,
+"height":    460,
+"geographyConfig": {
+ "dataUrl": "./grenobleSHP.json",
+"borderWidth":    0.1,
+"popupTemplate":  function(geography, data) { //this function should just return a string
+                             return '<div class=hoverinfo><strong>' + 'Bureau(x) de vote :' + geography.properties.BV + '<BR>Abstention: ' + geography.properties.Abstntn + '</strong></div>';
+}   
+},
+"scope": "grenobleSHP",
+"setProjection":  function( element, options ) {
+    var projection, path;
+    path = d3.geo.path()
+    .projection(null);
+    
+    return {path: path, projection: projection};
+} ,
+"fills": {
+ "(35,40]": "#F7F7F7",
+"(40,45]": "#D9D9D9",
+"(45,50]": "#BDBDBD",
+"(50,55]": "#969696",
+"(55,60]": "#737373",
+"(60,65]": "#525252",
+"(65,70]": "#252525",
+"defaultFill": "grey" 
+},
+"data": {
+ "38185111": {
+ "CodeBV": "38185111",
+"fillKey": "(50,55]" 
+},
+"38185112": {
+ "CodeBV": "38185112",
+"fillKey": "(45,50]" 
+},
+"38185113": {
+ "CodeBV": "38185113",
+"fillKey": "(40,45]" 
+},
+"38185114": {
+ "CodeBV": "38185114",
+"fillKey": "(40,45]" 
+},
+"38185121": {
+ "CodeBV": "38185121",
+"fillKey": "(40,45]" 
+},
+"38185122": {
+ "CodeBV": "38185122",
+"fillKey": "(35,40]" 
+},
+"38185123": {
+ "CodeBV": "38185123",
+"fillKey": "(45,50]" 
+},
+"38185124": {
+ "CodeBV": "38185124",
+"fillKey": "(45,50]" 
+},
+"38185131": {
+ "CodeBV": "38185131",
+"fillKey": "(40,45]" 
+},
+"38185132": {
+ "CodeBV": "38185132",
+"fillKey": "(35,40]" 
+},
+"38185133": {
+ "CodeBV": "38185133",
+"fillKey": "(35,40]" 
+},
+"38185141": {
+ "CodeBV": "38185141",
+"fillKey": "(40,45]" 
+},
+"38185151": {
+ "CodeBV": "38185151",
+"fillKey": "(40,45]" 
+},
+"38185152": {
+ "CodeBV": "38185152",
+"fillKey": "(55,60]" 
+},
+"38185161": {
+ "CodeBV": "38185161",
+"fillKey": "(45,50]" 
+},
+"38185162": {
+ "CodeBV": "38185162",
+"fillKey": "(60,65]" 
+},
+"38185163": {
+ "CodeBV": "38185163",
+"fillKey": "(60,65]" 
+},
+"38185171": {
+ "CodeBV": "38185171",
+"fillKey": "(60,65]" 
+},
+"38185172": {
+ "CodeBV": "38185172",
+"fillKey": "(50,55]" 
+},
+"38185211": {
+ "CodeBV": "38185211",
+"fillKey": "(35,40]" 
+},
+"38185212": {
+ "CodeBV": "38185212",
+"fillKey": "(40,45]" 
+},
+"38185213": {
+ "CodeBV": "38185213",
+"fillKey": "(40,45]" 
+},
+"38185221": {
+ "CodeBV": "38185221",
+"fillKey": "(40,45]" 
+},
+"38185222": {
+ "CodeBV": "38185222",
+"fillKey": "(40,45]" 
+},
+"38185231": {
+ "CodeBV": "38185231",
+"fillKey": "(40,45]" 
+},
+"38185241": {
+ "CodeBV": "38185241",
+"fillKey": "(45,50]" 
+},
+"38185242": {
+ "CodeBV": "38185242",
+"fillKey": "(45,50]" 
+},
+"38185243": {
+ "CodeBV": "38185243",
+"fillKey": "(45,50]" 
+},
+"38185251": {
+ "CodeBV": "38185251",
+"fillKey": "(45,50]" 
+},
+"38185252": {
+ "CodeBV": "38185252",
+"fillKey": "(45,50]" 
+},
+"38185253": {
+ "CodeBV": "38185253",
+"fillKey": "(45,50]" 
+},
+"38185254": {
+ "CodeBV": "38185254",
+"fillKey": "(45,50]" 
+},
+"38185255": {
+ "CodeBV": "38185255",
+"fillKey": "(40,45]" 
+},
+"38185311": {
+ "CodeBV": "38185311",
+"fillKey": "(45,50]" 
+},
+"38185312": {
+ "CodeBV": "38185312",
+"fillKey": "(50,55]" 
+},
+"38185313": {
+ "CodeBV": "38185313",
+"fillKey": "(45,50]" 
+},
+"38185314": {
+ "CodeBV": "38185314",
+"fillKey": "(40,45]" 
+},
+"38185321": {
+ "CodeBV": "38185321",
+"fillKey": "(40,45]" 
+},
+"38185322": {
+ "CodeBV": "38185322",
+"fillKey": "(60,65]" 
+},
+"38185323": {
+ "CodeBV": "38185323",
+"fillKey": "(55,60]" 
+},
+"38185331": {
+ "CodeBV": "38185331",
+"fillKey": "(50,55]" 
+},
+"38185332": {
+ "CodeBV": "38185332",
+"fillKey": "(45,50]" 
+},
+"38185341": {
+ "CodeBV": "38185341",
+"fillKey": "(45,50]" 
+},
+"38185342": {
+ "CodeBV": "38185342",
+"fillKey": "(40,45]" 
+},
+"38185343": {
+ "CodeBV": "38185343",
+"fillKey": "(50,55]" 
+},
+"38185344": {
+ "CodeBV": "38185344",
+"fillKey": "(45,50]" 
+},
+"38185351": {
+ "CodeBV": "38185351",
+"fillKey": "(45,50]" 
+},
+"38185352": {
+ "CodeBV": "38185352",
+"fillKey": "(45,50]" 
+},
+"38185411": {
+ "CodeBV": "38185411",
+"fillKey": "(50,55]" 
+},
+"38185412": {
+ "CodeBV": "38185412",
+"fillKey": "(40,45]" 
+},
+"38185413": {
+ "CodeBV": "38185413",
+"fillKey": "(35,40]" 
+},
+"38185421": {
+ "CodeBV": "38185421",
+"fillKey": "(40,45]" 
+},
+"38185422": {
+ "CodeBV": "38185422",
+"fillKey": "(40,45]" 
+},
+"38185423": {
+ "CodeBV": "38185423",
+"fillKey": "(40,45]" 
+},
+"38185424": {
+ "CodeBV": "38185424",
+"fillKey": "(40,45]" 
+},
+"38185425": {
+ "CodeBV": "38185425",
+"fillKey": "(40,45]" 
+},
+"38185431": {
+ "CodeBV": "38185431",
+"fillKey": "(50,55]" 
+},
+"38185432": {
+ "CodeBV": "38185432",
+"fillKey": "(45,50]" 
+},
+"38185433": {
+ "CodeBV": "38185433",
+"fillKey": "(45,50]" 
+},
+"38185511": {
+ "CodeBV": "38185511",
+"fillKey": "(45,50]" 
+},
+"38185512": {
+ "CodeBV": "38185512",
+"fillKey": "(45,50]" 
+},
+"38185513": {
+ "CodeBV": "38185513",
+"fillKey": "(40,45]" 
+},
+"38185514": {
+ "CodeBV": "38185514",
+"fillKey": "(50,55]" 
+},
+"38185521": {
+ "CodeBV": "38185521",
+"fillKey": "(40,45]" 
+},
+"38185531": {
+ "CodeBV": "38185531",
+"fillKey": "(40,45]" 
+},
+"38185532": {
+ "CodeBV": "38185532",
+"fillKey": "(45,50]" 
+},
+"38185541": {
+ "CodeBV": "38185541",
+"fillKey": "(45,50]" 
+},
+"38185542": {
+ "CodeBV": "38185542",
+"fillKey": "(35,40]" 
+},
+"38185543": {
+ "CodeBV": "38185543",
+"fillKey": "(45,50]" 
+},
+"38185544": {
+ "CodeBV": "38185544",
+"fillKey": "(50,55]" 
+},
+"38185545": {
+ "CodeBV": "38185545",
+"fillKey": "(50,55]" 
+},
+"38185551": {
+ "CodeBV": "38185551",
+"fillKey": "(40,45]" 
+},
+"38185561": {
+ "CodeBV": "38185561",
+"fillKey": "(40,45]" 
+},
+"38185562": {
+ "CodeBV": "38185562",
+"fillKey": "(40,45]" 
+},
+"38185611": {
+ "CodeBV": "38185611",
+"fillKey": "(65,70]" 
+},
+"38185612": {
+ "CodeBV": "38185612",
+"fillKey": "(55,60]" 
+},
+"38185613": {
+ "CodeBV": "38185613",
+"fillKey": "(55,60]" 
+},
+"38185621": {
+ "CodeBV": "38185621",
+"fillKey": "(65,70]" 
+},
+"38185622": {
+ "CodeBV": "38185622",
+"fillKey": "(65,70]" 
+},
+"38185631": {
+ "CodeBV": "38185631",
+"fillKey": "(55,60]" 
+},
+"38185632": {
+ "CodeBV": "38185632",
+"fillKey": "(45,50]" 
+},
+"38185641": {
+ "CodeBV": "38185641",
+"fillKey": "(50,55]" 
+},
+"38185651": {
+ "CodeBV": "38185651",
+"fillKey": "(65,70]" 
+},
+"38185652": {
+ "CodeBV": "38185652",
+"fillKey": "(45,50]" 
+},
+"38185661": {
+ "CodeBV": "38185661",
+"fillKey": "(45,50]" 
+},
+"38185662": {
+ "CodeBV": "38185662",
+"fillKey": "(40,45]" 
+} 
+},
+"legend": true,
+"labels": true,
+"id": "chart3a335645a8bc" 
+}
+  chartParams.element = document.getElementById('chart3a335645a8bc')
+  
+  
+  var mapchart3a335645a8bc = new Datamap(chartParams);
+               mapchart3a335645a8bc.legend();
+  
+  
+    
+  // draw a bubble map if specified
+  if (chartParams.bubbles) {
+    var bubbles = chartParams.bubbles
+    mapchart3a335645a8bc.bubbles(bubbles.data, bubbles.config)
+  }
+</script>
+
+<style>
+.datamaps {
+  position: relative;
+}
+</style>
+    
+<style>
+               .land {
+               fill: #FAFAFA ;
+               stroke-width: 0.5px;
+               stroke: #BDBDBD !important;
+               pointer-events: none;
+               }
+               </style>
+               </body>
+</html>
