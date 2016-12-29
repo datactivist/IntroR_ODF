@@ -4,6 +4,10 @@ date: "17 au 19 octobre 2016"
 output:
   rmdformats::readthedown:
     highlight: kate
+    lightbox: true
+    use_bookdown: true
+    self_contained: false
+    css: styles.css
 ---
 
 
@@ -33,6 +37,8 @@ Elle accompagne les supports de formation suivants :
 - les [slides de la deuxième journée](./jour2.html)
 - les [slides de la troisième journée](./jour3.html)
 - le [script R](https://github.com/datactivist/IntroR_ODF/blob/master/script.R) reprenant les principales manipulations de données effectuées durant ces trois jours.
+
+La documentation correspondant au module suivant, "Utiliser R pour l’analyse et la visualisation de données", peut être [retrouvée ici](./index2.html).
 
 L'ensemble de ces matériaux peut être retrouvé sur le [repo github dédié](https://github.com/datactivist/IntroR_ODF).
 
@@ -124,7 +130,7 @@ Principes:
 
 ## Qu'est ce que le big data ?
 
-<iframe src="https://giphy.com/embed/TnuKaZxbMbHhK" width="480" height="319" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/TnuKaZxbMbHhK">via GIPHY</a></p>
+[![What is big data anyway ?](http://i.giphy.com/TnuKaZxbMbHhK.gif)](http://gph.is/29aDePB)
 
 Big Data : [règle des 3 V](http://www.journaldunet.com/solutions/expert/51696/les-3-v-du-big-data---volume--vitesse-et-variete.shtml) (Vélocité, Volume, Variété) : hors des GAFA, on rencontre rarement des données massives qui respectent ces trois critères. Voir [cet article de Samuel Goëta](http://www.cairn.info/revue-informations-sociales-2015-5-page-26.htm) qui permet de bien distinguer open data et big data.
 Ces données ne sont en général pas ouvertes, c'est un trésor bien gardé des organisations. 
@@ -151,7 +157,9 @@ La maîtrise de l'information est un élément essentiel du rapport au pouvoir (
 
 Les données ne signifient rien à l'état brut. C'est un modèle qui permet de les interpréter : on fait des hypothèses sur le rapport des données avec la réalité et on donne du sens aux données pour confirmer/infirmer ce modèle. 
 
-<iframe src="https://giphy.com/embed/J14dxhoJLWlI4" width="480" height="360" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/J14dxhoJLWlI4">via GIPHY</a></p>
+![fatal experience - http://gph.is/29hJuIt](http://i.giphy.com/J14dxhoJLWlI4.gif)
+
+
 
 Tout modèle vient avec des postulats. Il y a toujours un modèle. Quand il n'y en a pas, il est implicite. 
 
@@ -200,7 +208,7 @@ Outils déjà utilisés par les participants :
 
 Formats de données :
 
-<iframe src="https://giphy.com/embed/jEEYJO9EgU5ig" width="480" height="265" frameBorder="0" class="giphy-embed" allowFullScreen></iframe><p><a href="https://giphy.com/gifs/jEEYJO9EgU5ig">via GIPHY</a></p>
+![Ciel mon tableur ! - http://gph.is/29aFBC1](http://i.giphy.com/jEEYJO9EgU5ig.gif)
 
    * tabulaires (voir [RIO (R Input Output)](https://cran.r-project.org/web/packages/rio/vignettes/rio.html))
    * Excel / tableurs
@@ -658,7 +666,7 @@ Exemple: `load("./nom_du_fichier.Rdata")`
 
 Avec Tab, on peut visualiser les arguments de la fonction et les fichiers disponibles dans l'arborescence. 
 
-> ️Pas d'obilgation de nommer les arguments... si on les enregistre dans l'ordre prévu dans l'aide ou dans la documentation en surimpression de la fonction.
+> ️Pas d'obligation de nommer les arguments... si on les enregistre dans l'ordre prévu dans l'aide ou dans la documentation en surimpression de la fonction.
 
 Dans l'aide, on peut savoir les arguments obligatoires : ils n'ont pas de valeurs par défaut. 
 Ex pour `load` : 
@@ -1228,7 +1236,7 @@ On regarde la doc de `left_join` : l'argument qui fait la liaison c'est `by`.
 On fait un vecteur Code Insee (dans jeu élections) = Code Geo (dans jeu INSEE)
 
 ```{r}
-# on lit le fichier avec les codes des zones d'empli
+# on lit le fichier avec les codes des zones d'emploi
 ze <- read_csv2("https://frama.link/ze_csv")
 
 # on le fusionne avec nos données

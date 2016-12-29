@@ -1,0 +1,34 @@
+@import url('https://fonts.googleapis.com/css?family=Open+Sans');
+
+#table-of-contents h2 {
+  background-color: #E5555C;
+}
+
+#table-of-contents {
+  background-color: #282828;
+}
+#postamble {
+  border-top-color: #282828;
+}
+
+
+h1, h2, h3, h4, h5, h6, legend {
+  color: #E5555C;
+  font-family: "Open Sans";
+}
+
+body {
+  font-family: "Open Sans";
+  color: #282828;
+  background-color: #FEF1EB;
+}
+
+#main a {
+  background-image: linear-gradient(180deg,#e5555c,#e5555c);
+  color:#E5555C;
+}
+
+#main a:hover {
+  color: #ffffff;
+  
+}
