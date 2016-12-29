@@ -73,42 +73,42 @@ Pad collaboratif : https://frama.link/formationR_pad2
 - Un exemple : [les aides perçues au titre de la PAC](https://www.data.gouv.fr/fr/datasets/aides-percues-par-les-personnes-morales-au-titre-de-la-politique-agricole-commune/)
 
 ## La notion de fonction
-
+  
 ```{r}
 sum(1, 2, 3)
-
+  
 a <- sum(1, 2, 3)
-
+  
 a
 ```
-
-
-
+  
+  
+  
 # Le tidyverse 
-
+  
 ## La notion de tidy data
-
+  
 > “Happy families are all alike; every unhappy family is unhappy in its own way.” – Leo Tolstoy
-
+  
 > “Tidy datasets are all alike, but every messy dataset is messy in its own way.” – Hadley Wickham
-
+  
 - À chaque variable sa propre colonne
 - À chaque observation sa propre ligne
 - À chaque valeur sa propre cellule
-
+  
 ## La notion de tidy data
-
+  
 ```{r, echo = FALSE, out.width='90%', fig.align='center'}
 knitr::include_graphics("./img/tidy-1.png")
 ```
-
+  
 ## La notion de tidy data
-
+  
 - Mettre chaque jeu de données dans un `tibble`
 - Mettre chaque variable dans une colonne 
-
+  
 ## Un exemple de untidy data
-
+  
 https://www.data.gouv.fr/fr/datasets/election-presidentielle-2012-resultats-572126/
 
 ## Nettoyage et préparation de ce jeu de données
