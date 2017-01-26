@@ -1279,3 +1279,5 @@ df_large %>%
 
 ```
 
+
+### Accéder à la deuxième partie de cette formation, ["Utiliser R pour l’analyse et la visualisation de données"](./index2.html)
