@@ -522,7 +522,7 @@ Ex. : `library`, on voit s'afficher les arguments dans une petite fenêtre qui s
    * Bonne pratiques : 
        * Nom des colonnes sur la 1ère ligne.
        * Mettre le texte entre guillemets --> HYPER IMPORTANT pour signifier que c'est du texte et non des valeurs numériques
-           * Cas de la corse : codes départements interprétés comme valeurs numériques... mais le logiciel affiche "erreur" une fois arrivé à la Corse (2A, 2B)
+           * Cas de la Corse : codes départements interprétés comme valeurs numériques... mais le logiciel affiche "erreur" une fois arrivé à la Corse (2A, 2B)
        * Les cellules fusionnées sont à gérer comme des cellules vides, comme les commentaires
        * Voir le [guide de Christophe Libert sur les fichiers CSV](http://fr.slideshare.net/christophelibertidf/bonnes-pratiquesexcel-cc27juin2013)
 
