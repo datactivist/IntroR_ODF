@@ -1,5 +1,5 @@
 ---
-title: "Introduction aux outils d’analyse de données et à R"
+title: "Introduction aux outils d’analyse de données et à R - partie 2"
 date: "14 au 16 novembre 2016"
 output:
   rmdformats::readthedown:
