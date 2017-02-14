@@ -706,7 +706,7 @@ $(document).ready(function () {
 </ul></li>
 <li>On entre dans le script le nom de l’objet auquel veut assigner la valeur puis <code>&lt;-</code> puis la fonction et remplir les arguments :</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">monjeudedonnees &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;http://www.ideeslibres.org/opendata/elus_municipaux_2008-2014/prenoms.csv&quot;</span>)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">monjeudedonnees&lt;-<span class="kw">read_csv2</span>(<span class="st">&quot;http://www.ideeslibres.org/opendata/elus_municipaux_2008-2014/prenoms.csv&quot;</span>)</code></pre></div>
 <pre><code>Parsed with column specification:
 cols(
   prenom = col_character(),
@@ -730,12 +730,19 @@ cols(
 <li><p>Quand on ne sait pas, on dit que ce sont des characters.</p></li>
 <li><p>Exemple si on veut spécifier qu’une colonne est une chaîne de caractères:</p></li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">read_csv2</span>(<span class="st">&quot;monfichier.csv&quot;</span>, <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">colonne_nomA_avec_du_texte =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">colonne_nomB_Avec_nombres_decimaux =</span> <span class="kw">col_double</span>(), <span class="dt">colonne_nomC_avec_des_nombres_entiers =</span> <span class="kw">col_integer</span>()))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">   <span class="kw">read_csv2</span>(<span class="st">&quot;monfichier.csv&quot;</span>, 
+             <span class="dt">col_types =</span> <span class="kw">cols</span> (
+        <span class="dt">colonne_nomA_avec_du_texte =</span> <span class="kw">col_character</span>(),
+        <span class="dt">colonne_nomB_Avec_nombres_decimaux =</span> <span class="kw">col_double</span>(),
+        <span class="dt">colonne_nomC_avec_des_nombres_entiers =</span> <span class="kw">col_integer</span> ()
+   ))</code></pre></div>
 <p>Nombre entier (<code>integer</code>) : besoin de moins d’espace pour les stocker Nombre décimal (<code>double</code>) : prend plus d’espace pour la mémoire car plus de diversité</p>
 <p>Dans le cas du jeu de données sur les prénoms, on a le code suivant :</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">monjeudedonnees &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;http://www.ideeslibres.org/opendata/elus_municipaux_2008-2014/prenoms.csv&quot;</span>, 
-    <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">prenom =</span> <span class="kw">col_character</span>(), <span class="dt">genre =</span> <span class="kw">col_character</span>(), <span class="dt">nb =</span> <span class="kw">col_integer</span>()))</code></pre></div>
+                             <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">prenom =</span> <span class="kw">col_character</span>(),  
+                                             <span class="dt">genre =</span> <span class="kw">col_character</span>(),  
+                                             <span class="dt">nb =</span> <span class="kw">col_integer</span>())
+                             )</code></pre></div>
 <p>Parser = prendre une suite d’éléments et les rendre interprétables. R parse le fichier automatiquement. Il faut l’intégrer dans le script pour avoir une bonne documentation qui permettra la reproductibilité du travail.</p>
 </div>
 </div>
@@ -784,7 +791,7 @@ cols(
 <p>️Pas d’obligation de nommer les arguments… si on les enregistre dans l’ordre prévu dans l’aide ou dans la documentation en surimpression de la fonction.</p>
 </blockquote>
 <p>Dans l’aide, on peut savoir les arguments obligatoires : ils n’ont pas de valeurs par défaut. Ex pour <code>load</code> :</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(file, <span class="dt">envir =</span> <span class="kw">parent.frame</span>(), <span class="dt">verbose =</span> <span class="ot">FALSE</span>)  <span class="co"># file est un argument obligatoire car n&#39;a pas de valeur par défaut</span></code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">load</span>(file, <span class="dt">envir =</span> <span class="kw">parent.frame</span>(), <span class="dt">verbose =</span> <span class="ot">FALSE</span>) <span class="co"># file est un argument obligatoire car n&#39;a pas de valeur par défaut</span></code></pre></div>
 <p>Attention, ️il faut sauvegarder son script sinon on perd tout. Faire Ctrl-S (Windows, Linux ou Pomme-S) et enregistrer le script.</p>
 </div>
 <div id="nettoyer-les-donnees---tidy-data" class="section level1">
@@ -806,32 +813,83 @@ cols(
 <li>Executer le code suivant :</li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">P2012T1 &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;https://www.dropbox.com/s/6qc3nnsiohei6f2/presidentielle2012T1.csv?raw=1&quot;</span>, 
-    <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_character</span>(), <span class="st">`</span><span class="dt">Libellé du département</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_character</span>(), 
-        <span class="st">`</span><span class="dt">Code de la commune</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_character</span>(), <span class="st">`</span><span class="dt">Libellé de la commune</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_character</span>(), 
-        <span class="dt">Inscrits =</span> <span class="kw">col_integer</span>(), <span class="dt">Abstentions =</span> <span class="kw">col_integer</span>(), <span class="st">`</span><span class="dt">% Abs/Ins</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), 
-        <span class="dt">Votants =</span> <span class="kw">col_integer</span>(), <span class="st">`</span><span class="dt">% Vot/Ins</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">Blancs et nuls</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% BlNuls/Ins</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% BlNuls/Vot</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), Exprimé<span class="dt">s =</span> <span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% Exp/Ins</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% Exp/Vot</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="dt">Sexe =</span> <span class="kw">col_logical</span>(), 
-        <span class="dt">Nom =</span> <span class="kw">col_character</span>(), Pré<span class="dt">nom =</span> <span class="kw">col_character</span>(), <span class="dt">Voix =</span> <span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% Voix/Ins</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% Voix/Exp</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="dt">Sexe_1 =</span> <span class="kw">col_logical</span>(), 
-        <span class="dt">Nom_1 =</span> <span class="kw">col_character</span>(), Pré<span class="dt">nom_1 =</span> <span class="kw">col_character</span>(), <span class="dt">Voix_1 =</span> <span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% Voix/Ins_1</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% Voix/Exp_1</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="dt">Sexe_2 =</span> <span class="kw">col_character</span>(), 
-        <span class="dt">Nom_2 =</span> <span class="kw">col_character</span>(), Pré<span class="dt">nom_2 =</span> <span class="kw">col_character</span>(), <span class="dt">Voix_2 =</span> <span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% Voix/Ins_2</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% Voix/Exp_2</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="dt">Sexe_3 =</span> <span class="kw">col_character</span>(), 
-        <span class="dt">Nom_3 =</span> <span class="kw">col_character</span>(), Pré<span class="dt">nom_3 =</span> <span class="kw">col_character</span>(), <span class="dt">Voix_3 =</span> <span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% Voix/Ins_3</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% Voix/Exp_3</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="dt">Sexe_4 =</span> <span class="kw">col_character</span>(), 
-        <span class="dt">Nom_4 =</span> <span class="kw">col_character</span>(), Pré<span class="dt">nom_4 =</span> <span class="kw">col_character</span>(), <span class="dt">Voix_4 =</span> <span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% Voix/Ins_4</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% Voix/Exp_4</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="dt">Sexe_5 =</span> <span class="kw">col_logical</span>(), 
-        <span class="dt">Nom_5 =</span> <span class="kw">col_character</span>(), Pré<span class="dt">nom_5 =</span> <span class="kw">col_character</span>(), <span class="dt">Voix_5 =</span> <span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% Voix/Ins_5</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% Voix/Exp_5</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="dt">Sexe_6 =</span> <span class="kw">col_character</span>(), 
-        <span class="dt">Nom_6 =</span> <span class="kw">col_character</span>(), Pré<span class="dt">nom_6 =</span> <span class="kw">col_character</span>(), <span class="dt">Voix_6 =</span> <span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% Voix/Ins_6</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% Voix/Exp_6</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="dt">Sexe_7 =</span> <span class="kw">col_character</span>(), 
-        <span class="dt">Nom_7 =</span> <span class="kw">col_character</span>(), Pré<span class="dt">nom_7 =</span> <span class="kw">col_character</span>(), <span class="dt">Voix_7 =</span> <span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% Voix/Ins_7</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% Voix/Exp_7</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="dt">Sexe_8 =</span> <span class="kw">col_character</span>(), 
-        <span class="dt">Nom_8 =</span> <span class="kw">col_character</span>(), Pré<span class="dt">nom_8 =</span> <span class="kw">col_character</span>(), <span class="dt">Voix_8 =</span> <span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% Voix/Ins_8</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% Voix/Exp_8</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="dt">Sexe_9 =</span> <span class="kw">col_character</span>(), 
-        <span class="dt">Nom_9 =</span> <span class="kw">col_character</span>(), Pré<span class="dt">nom_9 =</span> <span class="kw">col_character</span>(), <span class="dt">Voix_9 =</span> <span class="kw">col_integer</span>(), 
-        <span class="st">`</span><span class="dt">% Voix/Ins_9</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(), <span class="st">`</span><span class="dt">% Voix/Exp_9</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>()))</code></pre></div>
+                     <span class="dt">col_types =</span> <span class="kw">cols</span>(
+                       <span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_character</span>(),
+                       <span class="st">`</span><span class="dt">Libellé du département</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_character</span>(),
+                       <span class="st">`</span><span class="dt">Code de la commune</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_character</span>(),
+                       <span class="st">`</span><span class="dt">Libellé de la commune</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_character</span>(),
+                       <span class="dt">Inscrits =</span> <span class="kw">col_integer</span>(),
+                       <span class="dt">Abstentions =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Abs/Ins</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="dt">Votants =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Vot/Ins</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">Blancs et nuls</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% BlNuls/Ins</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% BlNuls/Vot</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       Exprimé<span class="dt">s =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Exp/Ins</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% Exp/Vot</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="dt">Sexe =</span> <span class="kw">col_logical</span>(),
+                       <span class="dt">Nom =</span> <span class="kw">col_character</span>(),
+                       Pré<span class="dt">nom =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Voix =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Ins</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Exp</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="dt">Sexe_1 =</span> <span class="kw">col_logical</span>(),
+                       <span class="dt">Nom_1 =</span> <span class="kw">col_character</span>(),
+                       Pré<span class="dt">nom_1 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Voix_1 =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Ins_1</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Exp_1</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="dt">Sexe_2 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Nom_2 =</span> <span class="kw">col_character</span>(),
+                       Pré<span class="dt">nom_2 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Voix_2 =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Ins_2</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Exp_2</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="dt">Sexe_3 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Nom_3 =</span> <span class="kw">col_character</span>(),
+                       Pré<span class="dt">nom_3 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Voix_3 =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Ins_3</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Exp_3</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="dt">Sexe_4 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Nom_4 =</span> <span class="kw">col_character</span>(),
+                       Pré<span class="dt">nom_4 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Voix_4 =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Ins_4</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Exp_4</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="dt">Sexe_5 =</span> <span class="kw">col_logical</span>(),
+                       <span class="dt">Nom_5 =</span> <span class="kw">col_character</span>(),
+                       Pré<span class="dt">nom_5 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Voix_5 =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Ins_5</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Exp_5</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="dt">Sexe_6 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Nom_6 =</span> <span class="kw">col_character</span>(),
+                       Pré<span class="dt">nom_6 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Voix_6 =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Ins_6</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Exp_6</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="dt">Sexe_7 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Nom_7 =</span> <span class="kw">col_character</span>(),
+                       Pré<span class="dt">nom_7 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Voix_7 =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Ins_7</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Exp_7</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="dt">Sexe_8 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Nom_8 =</span> <span class="kw">col_character</span>(),
+                       Pré<span class="dt">nom_8 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Voix_8 =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Ins_8</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Exp_8</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="dt">Sexe_9 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Nom_9 =</span> <span class="kw">col_character</span>(),
+                       Pré<span class="dt">nom_9 =</span> <span class="kw">col_character</span>(),
+                       <span class="dt">Voix_9 =</span> <span class="kw">col_integer</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Ins_9</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>(),
+                       <span class="st">`</span><span class="dt">% Voix/Exp_9</span><span class="st">`</span> =<span class="st"> </span><span class="kw">col_double</span>())
+                     )</code></pre></div>
 <pre><code>Warning: Duplicated column names deduplicated: &#39;Sexe&#39; =&gt; &#39;Sexe_1&#39; [22],
 &#39;Nom&#39; =&gt; &#39;Nom_1&#39; [23], &#39;Prénom&#39; =&gt; &#39;Prénom_1&#39; [24], &#39;Voix&#39; =&gt;
 &#39;Voix_1&#39; [25], &#39;% Voix/Ins&#39; =&gt; &#39;% Voix/Ins_1&#39; [26], &#39;% Voix/Exp&#39; =&gt;
@@ -880,8 +938,8 @@ Voix/Exp_9&#39; [75]</code></pre>
 <li>Avec <code>select</code> : on indique les colonnes qu’on veut garder et celles dont on veut se débarrasser</li>
 </ul>
 <p>Colonnes pas utiles : libellé du département (on pourra les retrouver, redondant avec code du département), nom de la commune (redondant avec code de la commune), blancs et nuls (on pourra le recalculer)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">P2012T1 %&gt;%<span class="st"> </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Code de la commune</span><span class="st">`</span>, Inscrits, Votants, 
-    Exprimés, <span class="kw">contains</span>(<span class="st">&quot;Voix&quot;</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">P2012T1 %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span>,<span class="st">`</span><span class="dt">Code de la commune</span><span class="st">`</span>, Inscrits, Votants, Exprimés, <span class="kw">contains</span>(<span class="st">&quot;Voix&quot;</span>))</code></pre></div>
 <pre><code># A tibble: 36,791 × 35
    `Code du département` `Code de la commune` Inscrits Votants Exprimés
                    &lt;chr&gt;                &lt;chr&gt;    &lt;int&gt;   &lt;int&gt;    &lt;int&gt;
@@ -937,19 +995,21 @@ Voix/Exp_9&#39; [75]</code></pre>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">## on ne garde que les colonnes de nom
 
-noms &lt;-<span class="st"> </span>P2012T1 %&gt;%<span class="st"> </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&quot;Nom&quot;</span>))
+noms &lt;-<span class="st"> </span>P2012T1 %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="kw">starts_with</span>(<span class="st">&quot;Nom&quot;</span>))
 
 ## on ne garde que la première ligne
 
-noms &lt;-<span class="st"> </span>noms %&gt;%<span class="st"> </span><span class="kw">slice</span>(<span class="dv">1</span>)
+noms &lt;-<span class="st"> </span>noms %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">slice</span>(<span class="dv">1</span>)
 
-## On transforme en vecteur
+## On transforme en vecteur 
 noms &lt;-<span class="st"> </span><span class="kw">as.vector</span>(<span class="kw">t</span>(noms))
 
 ## on ne garde que les colonnes utiles
 
-df &lt;-<span class="st"> </span>P2012T1 %&gt;%<span class="st"> </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Code de la commune</span><span class="st">`</span>, Inscrits, 
-    Votants, Exprimés, <span class="kw">starts_with</span>(<span class="st">&quot;Voix&quot;</span>))
+df &lt;-<span class="st"> </span>P2012T1 %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(<span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span>, <span class="st">`</span><span class="dt">Code de la commune</span><span class="st">`</span>, Inscrits, Votants, Exprimés, <span class="kw">starts_with</span>(<span class="st">&quot;Voix&quot;</span>)) 
 
 ## on change les noms des colonnes pour y mettre le nom des candidats
 <span class="kw">names</span>(df)[<span class="dv">6</span>:<span class="dv">15</span>] &lt;-<span class="st"> </span>noms
@@ -1003,7 +1063,8 @@ $ HOLLANDE            &lt;int&gt; 112, 39, 1691, 195, 21, 332, 125, 38, 137,...<
 </ul></li>
 </ul>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(stringr)
-df %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt">codedpt =</span> <span class="kw">str_pad</span>(<span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span>, <span class="dv">2</span>, <span class="st">&quot;left&quot;</span>, <span class="dv">0</span>))</code></pre></div>
+df %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">codedpt =</span> <span class="kw">str_pad</span>(<span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span>,<span class="dv">2</span>, <span class="st">&quot;left&quot;</span>, <span class="dv">0</span>)) </code></pre></div>
 <pre><code># A tibble: 36,791 × 16
    `Code du département` `Code de la commune` Inscrits Votants Exprimés
                    &lt;chr&gt;                &lt;chr&gt;    &lt;int&gt;   &lt;int&gt;    &lt;int&gt;
@@ -1024,7 +1085,8 @@ df %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt
 <ul>
 <li>On refait la même chose pour les codes des communes en 3 chiffres pour être conforme à la norme INSEE :</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt">CodeCommune =</span> <span class="kw">str_pad</span>(<span class="st">&quot;Code de la commune&quot;</span>, <span class="dv">3</span>, <span class="st">&quot;left&quot;</span>, <span class="st">&quot;0&quot;</span>))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CodeCommune =</span> <span class="kw">str_pad</span>(<span class="st">&#39;Code de la commune&#39;</span>,<span class="dv">3</span>,<span class="st">&quot;left&quot;</span>,<span class="st">&quot;0&quot;</span>))</code></pre></div>
 <pre><code># A tibble: 36,791 × 16
    `Code du département` `Code de la commune` Inscrits Votants Exprimés
                    &lt;chr&gt;                &lt;chr&gt;    &lt;int&gt;   &lt;int&gt;    &lt;int&gt;
@@ -1045,10 +1107,12 @@ df %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt
 <ul>
 <li>Au final, on crée un pipe et on regarde le résultat avec la fonction <code>glimpse</code> :</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span>df %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt">codedpt =</span> <span class="kw">str_pad</span>(<span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span>, <span class="dv">2</span>, <span class="st">&quot;left&quot;</span>, <span class="dv">0</span>)) %&gt;%<span class="st"> </span>
-<span class="st">    </span><span class="kw">mutate</span>(<span class="dt">codecommune =</span> <span class="kw">str_pad</span>(<span class="st">`</span><span class="dt">Code de la commune</span><span class="st">`</span>, <span class="dv">3</span>, <span class="st">&quot;left&quot;</span>, <span class="dv">0</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span>df %&gt;%<span class="st">   </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">codedpt =</span> <span class="kw">str_pad</span>(<span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span>,<span class="dv">2</span>,<span class="st">&quot;left&quot;</span>,<span class="dv">0</span>)) %&gt;%<span class="st">  </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">codecommune =</span> <span class="kw">str_pad</span>(<span class="st">`</span><span class="dt">Code de la commune</span><span class="st">`</span>,<span class="dv">3</span>,<span class="st">&quot;left&quot;</span>,<span class="dv">0</span>)) 
 
-df %&gt;%<span class="st"> </span><span class="kw">glimpse</span>()</code></pre></div>
+df %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">glimpse</span>()</code></pre></div>
 <pre><code>Observations: 36,791
 Variables: 17
 $ Code du département &lt;chr&gt; &quot;1&quot;, &quot;1&quot;, &quot;1&quot;, &quot;1&quot;, &quot;1&quot;, &quot;1&quot;, &quot;1&quot;, &quot;1&quot;, &quot;1...
@@ -1078,10 +1142,12 @@ $ codecommune         &lt;chr&gt; &quot;001&quot;, &quot;002&quot;, &quot;004&qu
 <li>Dans R, s’appelle <code>paste</code> : coller (facile !). Il y a deux fonctions : paste (met un espace par défaut) et paste0 (sans espace par défaut)</li>
 <li>Le code à mettre est :</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span>df %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt">CodeInsee =</span> <span class="kw">paste0</span>(codedpt, codecommune))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df &lt;-<span class="st"> </span>df %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CodeInsee =</span> <span class="kw">paste0</span>(codedpt, codecommune))
 
 <span class="co"># on se débarasse des variables devenues inutiles</span>
-df &lt;-<span class="st"> </span>df %&gt;%<span class="st"> </span><span class="kw">select</span>(-<span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span>, -<span class="st">`</span><span class="dt">Code de la commune</span><span class="st">`</span>)</code></pre></div>
+df &lt;-<span class="st"> </span>df %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(-<span class="st">`</span><span class="dt">Code du département</span><span class="st">`</span>, -<span class="st">`</span><span class="dt">Code de la commune</span><span class="st">`</span>)</code></pre></div>
 <ul>
 <li>De plus on sélectionne ce qui nous intéresse et on lui dit avec le moins les colonnes qu’il doit retirer.</li>
 <li>Reste à assigner.</li>
@@ -1090,26 +1156,45 @@ df &lt;-<span class="st"> </span>df %&gt;%<span class="st"> </span><span class="
 <h2><span class="header-section-number">13.1</span> Un autre exemple</h2>
 <p>Travaillons sur le jeu de données portant sur <a href="https://frama.link/reserve">la réserve parlementaire</a>.</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="kw">library</span>(tidyverse)
-reserve &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;./reserve-assemblee-2013.csv&quot;</span>, <span class="dt">col_types =</span> <span class="kw">cols</span>(<span class="dt">ID_SUBVENTION =</span> <span class="kw">col_integer</span>(), 
-    <span class="dt">NOM_BENEFICIAIRE =</span> <span class="kw">col_character</span>(), <span class="dt">DESCRIPTION_SUBVENTION =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">ADRESSE_BENEFICIAIRE =</span> <span class="kw">col_character</span>(), <span class="dt">PROGRAMME_PJL_FINANCE =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">MONTANT_SUBVENTION =</span> <span class="kw">col_integer</span>(), <span class="dt">PRENOM_NOM_DEPUTE_NOSDEPUTES =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">ID_DEPUTE_AN =</span> <span class="kw">col_character</span>(), <span class="dt">ID_NOSDEPUTES =</span> <span class="kw">col_integer</span>(), <span class="dt">NOM_DEPUTE_NOSDEPUTES =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">PRENOM_DEPUTE_NOSDEPUTES =</span> <span class="kw">col_character</span>(), <span class="dt">SEXE_DEPUTE =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">DATE_NAISSANCE_DEPUTE =</span> <span class="kw">col_date</span>(<span class="dt">format =</span> <span class="st">&quot;&quot;</span>), <span class="dt">LIEU_NAISSANCE_DEPUTE =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">ID_DEPARTEMENT =</span> <span class="kw">col_character</span>(), <span class="dt">DEPARTEMENT_NOSDEPUTES =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">NUMERO_CIRCONSCRIPTION =</span> <span class="kw">col_integer</span>(), <span class="dt">DATE_DEBUT_MANDAT =</span> <span class="kw">col_date</span>(<span class="dt">format =</span> <span class="st">&quot;&quot;</span>), 
-    <span class="dt">DATE_FIN_MANDAT =</span> <span class="kw">col_date</span>(<span class="dt">format =</span> <span class="st">&quot;&quot;</span>), <span class="dt">MANDAT_CLOS =</span> <span class="kw">col_integer</span>(), <span class="dt">GROUPE_SIGLE =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">PARTI_RATTACHEMENT_FINANCIER =</span> <span class="kw">col_character</span>(), <span class="dt">PROFESSION =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">PLACE_HEMICYCLE =</span> <span class="kw">col_integer</span>(), <span class="dt">URL_DEPUTE_AN =</span> <span class="kw">col_character</span>(), <span class="dt">SLUG_NOSDEPUTES =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">URL_DEPUTE_NOSDEPUTES =</span> <span class="kw">col_character</span>(), <span class="dt">API_NOSDEPUTES =</span> <span class="kw">col_character</span>(), 
-    <span class="dt">NB_MANDATS =</span> <span class="kw">col_integer</span>()))
+reserve &lt;-<span class="st"> </span><span class="kw">read_csv2</span>(<span class="st">&quot;./reserve-assemblee-2013.csv&quot;</span>, 
+          <span class="dt">col_types =</span> <span class="kw">cols</span>(
+            <span class="dt">ID_SUBVENTION =</span> <span class="kw">col_integer</span>(),
+            <span class="dt">NOM_BENEFICIAIRE =</span> <span class="kw">col_character</span>(),
+            <span class="dt">DESCRIPTION_SUBVENTION =</span> <span class="kw">col_character</span>(),
+            <span class="dt">ADRESSE_BENEFICIAIRE =</span> <span class="kw">col_character</span>(),
+            <span class="dt">PROGRAMME_PJL_FINANCE =</span> <span class="kw">col_character</span>(),
+            <span class="dt">MONTANT_SUBVENTION =</span> <span class="kw">col_integer</span>(),
+            <span class="dt">PRENOM_NOM_DEPUTE_NOSDEPUTES =</span> <span class="kw">col_character</span>(),
+            <span class="dt">ID_DEPUTE_AN =</span> <span class="kw">col_character</span>(),
+            <span class="dt">ID_NOSDEPUTES =</span> <span class="kw">col_integer</span>(),
+            <span class="dt">NOM_DEPUTE_NOSDEPUTES =</span> <span class="kw">col_character</span>(),
+            <span class="dt">PRENOM_DEPUTE_NOSDEPUTES =</span> <span class="kw">col_character</span>(),
+            <span class="dt">SEXE_DEPUTE =</span> <span class="kw">col_character</span>(),
+            <span class="dt">DATE_NAISSANCE_DEPUTE =</span> <span class="kw">col_date</span>(<span class="dt">format =</span> <span class="st">&quot;&quot;</span>),
+            <span class="dt">LIEU_NAISSANCE_DEPUTE =</span> <span class="kw">col_character</span>(),
+            <span class="dt">ID_DEPARTEMENT =</span> <span class="kw">col_character</span>(),
+            <span class="dt">DEPARTEMENT_NOSDEPUTES =</span> <span class="kw">col_character</span>(),
+            <span class="dt">NUMERO_CIRCONSCRIPTION =</span> <span class="kw">col_integer</span>(),
+            <span class="dt">DATE_DEBUT_MANDAT =</span> <span class="kw">col_date</span>(<span class="dt">format =</span> <span class="st">&quot;&quot;</span>),
+            <span class="dt">DATE_FIN_MANDAT =</span> <span class="kw">col_date</span>(<span class="dt">format =</span> <span class="st">&quot;&quot;</span>),
+            <span class="dt">MANDAT_CLOS =</span> <span class="kw">col_integer</span>(),
+            <span class="dt">GROUPE_SIGLE =</span> <span class="kw">col_character</span>(),
+            <span class="dt">PARTI_RATTACHEMENT_FINANCIER =</span> <span class="kw">col_character</span>(),
+            <span class="dt">PROFESSION =</span> <span class="kw">col_character</span>(),
+            <span class="dt">PLACE_HEMICYCLE =</span> <span class="kw">col_integer</span>(),
+            <span class="dt">URL_DEPUTE_AN =</span> <span class="kw">col_character</span>(),
+            <span class="dt">SLUG_NOSDEPUTES =</span> <span class="kw">col_character</span>(),
+            <span class="dt">URL_DEPUTE_NOSDEPUTES =</span> <span class="kw">col_character</span>(),
+            <span class="dt">API_NOSDEPUTES =</span> <span class="kw">col_character</span>(),
+            <span class="dt">NB_MANDATS =</span> <span class="kw">col_integer</span>()
+          ))
 
 <span class="kw">library</span>(stringr)
 
-reserve &lt;-<span class="st"> </span>reserve %&gt;%<span class="st"> </span><span class="co"># création d&#39;un code circo sur deux caractères</span>
-<span class="kw">mutate</span>(<span class="dt">CodeCirco =</span> <span class="kw">str_pad</span>(NUMERO_CIRCONSCRIPTION, <span class="dv">2</span>, <span class="st">&quot;left&quot;</span>, <span class="st">&quot;0&quot;</span>)) %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt">CodeCirco =</span> <span class="kw">paste</span>(ID_DEPARTEMENT, 
-    CodeCirco, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>))  <span class="co"># concaténation</span>
+reserve &lt;-<span class="st"> </span>reserve %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="co"># création d&#39;un code circo sur deux caractères</span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CodeCirco =</span> <span class="kw">str_pad</span>(NUMERO_CIRCONSCRIPTION, <span class="dv">2</span>, <span class="st">&quot;left&quot;</span>, <span class="st">&quot;0&quot;</span>)) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">CodeCirco =</span> <span class="kw">paste</span>(ID_DEPARTEMENT, CodeCirco, <span class="dt">sep =</span> <span class="st">&quot;-&quot;</span>)) <span class="co"># concaténation</span>
 
 reserve</code></pre></div>
 <pre><code># A tibble: 10,920 × 30
@@ -1176,7 +1261,8 @@ reserve</code></pre></div>
 
 <span class="co"># large vers long</span>
 
-df_long &lt;-<span class="st"> </span>df %&gt;%<span class="st"> </span><span class="kw">gather</span>(Candidat, Voix, JOLY:HOLLANDE)
+df_long &lt;-<span class="st"> </span>df %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">gather</span>(Candidat, Voix, JOLY:HOLLANDE)
 
 df_long</code></pre></div>
 <pre><code># A tibble: 367,910 × 8
@@ -1231,24 +1317,27 @@ df_long &lt;-<span class="st"> </span>df_long %&gt;%<span class="st"> </span>
 <p><code>spread</code> : 2 arguments = Nom des deux colonnes</p>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># long vers large</span>
 
-df_large &lt;-<span class="st"> </span>df_long %&gt;%<span class="st"> </span><span class="kw">spread</span>(Candidat, Voix)
+df_large &lt;-<span class="st"> </span>df_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">spread</span>(Candidat, Voix)
 
 df_large</code></pre></div>
-<pre><code># A tibble: 36,791 × 16
-   Inscrits Votants Exprimés codedpt codecommune CodeInsee ARTHAUD BAYROU
-*     &lt;int&gt;   &lt;int&gt;    &lt;int&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;int&gt;  &lt;int&gt;
-1       592     508      499      01         001     01001       2     54
-2       215     179      174      01         002     01002       0     22
-3      8205    6507     6381      01         004     01004      41    543
-4      1152     982      964      01         005     01005       6     97
-5       105      88       87      01         006     01006       1      8
-6      1702    1480     1451      01         007     01007      12    141
-7       549     481      474      01         008     01008       0     55
-8       269     229      225      01         009     01009       1     27
- [ getOption(&quot;max.print&quot;) est atteint -- 2 lignes omises ]
-# ... with 36,781 more rows, and 8 more variables: CHEMINADE &lt;int&gt;,
-#   `DUPONT-AIGNAN` &lt;int&gt;, HOLLANDE &lt;int&gt;, JOLY &lt;int&gt;, `LE PEN` &lt;int&gt;,
-#   MÉLENCHON &lt;int&gt;, POUTOU &lt;int&gt;, SARKOZY &lt;int&gt;</code></pre>
+<pre><code># A tibble: 322,660 × 17
+   Inscrits Votants Exprimés codedpt codecommune CodeInsee pourcent.ins
+*     &lt;int&gt;   &lt;int&gt;    &lt;int&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;
+1       592     508      499      01         001     01001     2.195946
+2       215     179      174      01         002     01002     4.651163
+3      8205    6507     6381      01         004     01004     1.511274
+4      1152     982      964      01         005     01005     1.388889
+5       105      88       87      01         006     01006     2.857143
+6      1702    1480     1451      01         007     01007     1.527615
+7       549     481      474      01         008     01008     1.457195
+8       269     229      225      01         009     01009     1.858736
+9       681     582      570      01         010     01010     1.027900
+ [ getOption(&quot;max.print&quot;) est atteint -- ligne 1 omise ]
+# ... with 322,650 more rows, and 10 more variables: ARTHAUD &lt;int&gt;,
+#   BAYROU &lt;int&gt;, CHEMINADE &lt;int&gt;, `DUPONT-AIGNAN` &lt;int&gt;, HOLLANDE &lt;int&gt;,
+#   JOLY &lt;int&gt;, `LE PEN` &lt;int&gt;, MÉLENCHON &lt;int&gt;, POUTOU &lt;int&gt;,
+#   SARKOZY &lt;int&gt;</code></pre>
 </div>
 <div id="filter-les-donnees" class="section level2">
 <h2><span class="header-section-number">15.1</span> Filter les données</h2>
@@ -1261,9 +1350,10 @@ df_large</code></pre></div>
 <h3><span class="header-section-number">15.1.1</span> Exercice: Filtrer par les communes de la Region IDF</h3>
 <p>Nouvel opérateur: <code>%in%</code>, vérifie que les éléments à sa gauche appartiennent à l’ensemble qui se situe à sa droite. Permet de spécifier un certain périmètre. Bonne pratique : systématiquement remplacer <code>==</code> par <code>%in%</code> car l’opérateur <code>==</code> ne sait pas gérer les valeurs manquantes (<code>NA</code>), contrairement au <code>%in%</code></p>
 <p>Dans notre cas, le filtre porte sur tous les départements d’IDF.</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_idf &lt;-<span class="st"> </span>df_long %&gt;%<span class="st"> </span><span class="co"># ne garder que les lignes des départements d&#39;Ile-de-France %in% est un</span>
-<span class="co"># opérateur</span>
-<span class="kw">filter</span>(codedpt %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;75&quot;</span>, <span class="st">&quot;77&quot;</span>, <span class="st">&quot;78&quot;</span>, <span class="st">&quot;91&quot;</span>, <span class="st">&quot;92&quot;</span>, <span class="st">&quot;93&quot;</span>, <span class="st">&quot;94&quot;</span>, <span class="st">&quot;95&quot;</span>))
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_idf &lt;-<span class="st"> </span>df_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="co"># ne garder que les lignes des départements d&#39;Ile-de-France</span>
+<span class="st">  </span><span class="co"># %in% est un opérateur </span>
+<span class="st">  </span><span class="kw">filter</span>(codedpt %in%<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;75&quot;</span>, <span class="st">&quot;77&quot;</span>, <span class="st">&quot;78&quot;</span>, <span class="st">&quot;91&quot;</span>, <span class="st">&quot;92&quot;</span>, <span class="st">&quot;93&quot;</span>, <span class="st">&quot;94&quot;</span>, <span class="st">&quot;95&quot;</span>))
 
 df_idf</code></pre></div>
 <pre><code># A tibble: 12,810 × 9
@@ -1283,9 +1373,10 @@ df_idf</code></pre></div>
 <div id="exercice-filtrer-les-communes-des-bouches-du-rhone" class="section level3">
 <h3><span class="header-section-number">15.1.2</span> Exercice : filtrer les communes des Bouches du Rhone</h3>
 <p>Utiliser <code>%in%</code>, pas besoin de <code>c()</code>, car un seul département</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_bdr &lt;-<span class="st"> </span>df_long %&gt;%<span class="st"> </span><span class="co"># ne garder que les lignes des départements d&#39;Ile-de-France %in% est un</span>
-<span class="co"># opérateur</span>
-<span class="kw">filter</span>(codedpt %in%<span class="st"> &quot;13&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_bdr &lt;-<span class="st"> </span>df_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="co"># ne garder que les lignes des départements d&#39;Ile-de-France</span>
+<span class="st">  </span><span class="co"># %in% est un opérateur </span>
+<span class="st">  </span><span class="kw">filter</span>(codedpt %in%<span class="st"> &quot;13&quot;</span>)
 
 df_bdr</code></pre></div>
 <pre><code># A tibble: 1,190 × 9
@@ -1304,9 +1395,11 @@ df_bdr</code></pre></div>
 </div>
 <div id="exercice-trouver-les-communes-qui-votent-le-plus-pour-hollande" class="section level3">
 <h3><span class="header-section-number">15.1.3</span> Exercice : trouver les communes qui votent le plus pour Hollande</h3>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_hollande &lt;-<span class="st"> </span>df_long %&gt;%<span class="st"> </span><span class="kw">filter</span>(Candidat %in%<span class="st"> &quot;HOLLANDE&quot;</span>)
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_hollande &lt;-<span class="st"> </span>df_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">filter</span>(Candidat %in%<span class="st"> &quot;HOLLANDE&quot;</span>)
 
-df_hollande %&gt;%<span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(pourcent.ins))</code></pre></div>
+df_hollande %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(pourcent.ins))</code></pre></div>
 <pre><code># A tibble: 36,791 × 9
    Inscrits Votants Exprimés codedpt codecommune CodeInsee Candidat  Voix
       &lt;int&gt;   &lt;int&gt;    &lt;int&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;    &lt;chr&gt; &lt;int&gt;
@@ -1330,21 +1423,23 @@ df_hollande %&gt;%<span class="st"> </span><span class="kw">arrange</span>(<span
 <span class="st">  </span><span class="kw">filter</span>(LePen_ins &gt;<span class="st"> </span><span class="dv">20</span>)
 
 df_lepenistes</code></pre></div>
-<pre><code># A tibble: 12,058 × 17
-   Inscrits Votants Exprimés codedpt codecommune CodeInsee ARTHAUD BAYROU
-      &lt;int&gt;   &lt;int&gt;    &lt;int&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;   &lt;int&gt;  &lt;int&gt;
-1       592     508      499      01         001     01001       2     54
-2      1152     982      964      01         005     01005       6     97
-3       105      88       87      01         006     01006       1      8
-4       549     481      474      01         008     01008       0     55
-5       681     582      570      01         010     01010       6     47
-6       140     124      122      01         013     01013       0     18
-7       813     669      663      01         022     01022       6     55
-8        48      45       44      01         023     01023       0      3
- [ getOption(&quot;max.print&quot;) est atteint -- 2 lignes omises ]
-# ... with 12,048 more rows, and 9 more variables: CHEMINADE &lt;int&gt;,
-#   `DUPONT-AIGNAN` &lt;int&gt;, HOLLANDE &lt;int&gt;, JOLY &lt;int&gt;, `LE PEN` &lt;int&gt;,
-#   MÉLENCHON &lt;int&gt;, POUTOU &lt;int&gt;, SARKOZY &lt;int&gt;, LePen_ins &lt;dbl&gt;</code></pre>
+<pre><code># A tibble: 12,058 × 18
+   Inscrits Votants Exprimés codedpt codecommune CodeInsee pourcent.ins
+      &lt;int&gt;   &lt;int&gt;    &lt;int&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;
+1       592     508      499      01         001     01001     21.28378
+2      1152     982      964      01         005     01005     20.65972
+3       105      88       87      01         006     01006     23.80952
+4       549     481      474      01         008     01008     20.40073
+5       681     582      570      01         010     01010     22.76065
+6       140     124      122      01         013     01013     22.14286
+7       813     669      663      01         022     01022     20.54121
+8        48      45       44      01         023     01023     31.25000
+9      2117    1814     1753      01         025     01025     20.12282
+ [ getOption(&quot;max.print&quot;) est atteint -- ligne 1 omise ]
+# ... with 12,048 more rows, and 11 more variables: ARTHAUD &lt;int&gt;,
+#   BAYROU &lt;int&gt;, CHEMINADE &lt;int&gt;, `DUPONT-AIGNAN` &lt;int&gt;, HOLLANDE &lt;int&gt;,
+#   JOLY &lt;int&gt;, `LE PEN` &lt;int&gt;, MÉLENCHON &lt;int&gt;, POUTOU &lt;int&gt;,
+#   SARKOZY &lt;int&gt;, LePen_ins &lt;dbl&gt;</code></pre>
 <p><code>&gt;</code> est un prédicat logique d’inégalité</p>
 <p>quand la variable comporte un espace il est préférable de passer par l’autocomplétion, qui va ajouter des backticks (`LE PEN`) qui vont faire comprendre à R que c’est une seule expression.</p>
 <p>Pour éviter de faire la même transformation colonne par colonne, on peut utiliser <code>mutate_each</code> qui applique la transformation à toutes les colonnes à la fois. on créé une fonction : <code>funs(. /Inscrits = 100)</code></p>
@@ -1352,26 +1447,30 @@ df_lepenistes</code></pre></div>
 <ul>
 <li>vars permet d’indiquer les variables qu’on veut sélectionner</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_large %&gt;%<span class="st"> </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(ARTHAUD:SARKOZY), <span class="kw">funs</span>(./Inscrits *<span class="st"> </span><span class="dv">100</span>))</code></pre></div>
-<pre><code># A tibble: 36,791 × 16
-   Inscrits Votants Exprimés codedpt codecommune CodeInsee   ARTHAUD
-      &lt;int&gt;   &lt;int&gt;    &lt;int&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;     &lt;dbl&gt;
-1       592     508      499      01         001     01001 0.3378378
-2       215     179      174      01         002     01002 0.0000000
-3      8205    6507     6381      01         004     01004 0.4996953
-4      1152     982      964      01         005     01005 0.5208333
-5       105      88       87      01         006     01006 0.9523810
-6      1702    1480     1451      01         007     01007 0.7050529
-7       549     481      474      01         008     01008 0.0000000
-8       269     229      225      01         009     01009 0.3717472
-9       681     582      570      01         010     01010 0.8810573
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_large %&gt;%
+<span class="st">  </span><span class="kw">mutate_at</span>(<span class="kw">vars</span>(ARTHAUD:SARKOZY), <span class="kw">funs</span>(. /<span class="st"> </span>Inscrits *<span class="st"> </span><span class="dv">100</span>))</code></pre></div>
+<pre><code># A tibble: 322,660 × 17
+   Inscrits Votants Exprimés codedpt codecommune CodeInsee pourcent.ins
+      &lt;int&gt;   &lt;int&gt;    &lt;int&gt;   &lt;chr&gt;       &lt;chr&gt;     &lt;chr&gt;        &lt;dbl&gt;
+1       592     508      499      01         001     01001     2.195946
+2       215     179      174      01         002     01002     4.651163
+3      8205    6507     6381      01         004     01004     1.511274
+4      1152     982      964      01         005     01005     1.388889
+5       105      88       87      01         006     01006     2.857143
+6      1702    1480     1451      01         007     01007     1.527615
+7       549     481      474      01         008     01008     1.457195
+8       269     229      225      01         009     01009     1.858736
+9       681     582      570      01         010     01010     1.027900
  [ getOption(&quot;max.print&quot;) est atteint -- ligne 1 omise ]
-# ... with 36,781 more rows, and 9 more variables: BAYROU &lt;dbl&gt;,
-#   CHEMINADE &lt;dbl&gt;, `DUPONT-AIGNAN` &lt;dbl&gt;, HOLLANDE &lt;dbl&gt;, JOLY &lt;dbl&gt;,
-#   `LE PEN` &lt;dbl&gt;, MÉLENCHON &lt;dbl&gt;, POUTOU &lt;dbl&gt;, SARKOZY &lt;dbl&gt;</code></pre>
+# ... with 322,650 more rows, and 10 more variables: ARTHAUD &lt;dbl&gt;,
+#   BAYROU &lt;dbl&gt;, CHEMINADE &lt;dbl&gt;, `DUPONT-AIGNAN` &lt;dbl&gt;, HOLLANDE &lt;dbl&gt;,
+#   JOLY &lt;dbl&gt;, `LE PEN` &lt;dbl&gt;, MÉLENCHON &lt;dbl&gt;, POUTOU &lt;dbl&gt;,
+#   SARKOZY &lt;dbl&gt;</code></pre>
 <p>Quand on fait un <code>spread</code>, il faut qu’il y ait qu’une seule colonne qui représente les valeurs uniques de chaque ligne. On ne peut pas avoir nombre de voix et score des inscrits, par exemple. Il faut donc enlever les pourcentages d’inscrits. Un tableau long doit avoir 3 colonnes sinon c’est large. Il faut avoir 3 colonnes pour faire un spread.</p>
 <p>Le format long du jeu de données des élections a plus de colonnes que 3 mais ça reste un fichier long car les variables sont les mêmes pour chaque code Insee</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_large &lt;-<span class="st"> </span>df_long %&gt;%<span class="st"> </span><span class="kw">select</span>(-pourcent.ins) %&gt;%<span class="st"> </span><span class="kw">spread</span>(Candidat, Voix)</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_large &lt;-<span class="st"> </span>df_long %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">select</span>(-pourcent.ins) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">spread</span>(Candidat, Voix)</code></pre></div>
 <p>Si 4 colonnes : faire un <code>gather</code></p>
 <blockquote>
 <p>Ce qu’il faut retenir :)</p>
@@ -1386,7 +1485,9 @@ df_lepenistes</code></pre></div>
 <p>Exemple: agréger les résulats par département à partir du fichier par communes</p>
 <p>Une option: Partir du format large (pour avoir une colonne par candidat) Pour chaque groupe, il faut générer une ligne unique Puis calcul du nombre d’inscrits par département</p>
 <p>/!\ Quand on utilise <code>summarise</code> il faut toujours préciser les variables sur lesquelles on travaille sinon le résultat final présenté est tronqué</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_large %&gt;%<span class="st"> </span><span class="kw">group_by</span>(codedpt) %&gt;%<span class="st"> </span><span class="kw">summarise</span>(<span class="dt">Inscrits =</span> <span class="kw">sum</span>(Inscrits))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_large %&gt;%
+<span class="st">  </span><span class="kw">group_by</span>(codedpt) %&gt;%
+<span class="st">  </span><span class="kw">summarise</span>(<span class="dt">Inscrits =</span> <span class="kw">sum</span>(Inscrits))</code></pre></div>
 <pre><code># A tibble: 107 × 2
    codedpt Inscrits
      &lt;chr&gt;    &lt;int&gt;
@@ -1408,8 +1509,9 @@ df_lepenistes</code></pre></div>
 </ul></li>
 <li>Autre méthode: Pour chaque département avoir pour résultat final un tableau avec: total du nombre d’inscrits, d’exprimés, de votants, et de voix par candidats.</li>
 </ul>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_large %&gt;%<span class="st"> </span><span class="kw">group_by</span>(codedpt) %&gt;%<span class="st"> </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(Inscrits, Exprimés, Votants, 
-    ARTHAUD:SARKOZY), <span class="kw">funs</span>(<span class="kw">sum</span>(.)))</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r">df_large %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(codedpt) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(Inscrits, Exprimés, Votants, ARTHAUD:SARKOZY), <span class="kw">funs</span>(<span class="kw">sum</span>(.)))</code></pre></div>
 <pre><code># A tibble: 107 × 14
    codedpt Inscrits Exprimés Votants ARTHAUD BAYROU CHEMINADE
      &lt;chr&gt;    &lt;int&gt;    &lt;int&gt;   &lt;int&gt;   &lt;int&gt;  &lt;int&gt;     &lt;int&gt;
@@ -1454,12 +1556,14 @@ cols(
   REG2016 = col_integer()
 )</code></pre>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># on le fusionne avec nos données</span>
-df_large &lt;-<span class="st"> </span><span class="kw">left_join</span>(df_large, ze, <span class="dt">by =</span> <span class="kw">c</span>(<span class="dt">CodeInsee =</span> <span class="st">&quot;CODGEO&quot;</span>))
+df_large &lt;-<span class="st"> </span><span class="kw">left_join</span>(df_large, ze, <span class="dt">by =</span> <span class="kw">c</span>(<span class="st">&quot;CodeInsee&quot;</span> =<span class="st"> &quot;CODGEO&quot;</span>))
 
 <span class="co"># à partir de là, on peut agréger les résultats par zone d&#39;emploi</span>
-df_ze_lepen &lt;-<span class="st"> </span>df_large %&gt;%<span class="st"> </span><span class="kw">group_by</span>(LIBZE2010) %&gt;%<span class="st"> </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(Inscrits, 
-    Exprimés, Votants, ARTHAUD:SARKOZY), <span class="kw">funs</span>(<span class="kw">sum</span>(.))) %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt">LePen_ins =</span> <span class="st">`</span><span class="dt">LE PEN</span><span class="st">`</span>/Inscrits *<span class="st"> </span>
-<span class="st">    </span><span class="dv">100</span>) %&gt;%<span class="st"> </span><span class="kw">arrange</span>(<span class="kw">desc</span>(LePen_ins))
+df_ze_lepen &lt;-<span class="st"> </span>df_large %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">group_by</span>(LIBZE2010) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">summarise_at</span>(<span class="kw">vars</span>(Inscrits, Exprimés, Votants, ARTHAUD:SARKOZY), <span class="kw">funs</span>(<span class="kw">sum</span>(.))) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">LePen_ins =</span> <span class="st">`</span><span class="dt">LE PEN</span><span class="st">`</span> /<span class="st"> </span>Inscrits *<span class="st"> </span><span class="dv">100</span>) %&gt;%<span class="st"> </span>
+<span class="st">  </span><span class="kw">arrange</span>(<span class="kw">desc</span>(LePen_ins))
 
 df_ze_lepen</code></pre></div>
 <pre><code># A tibble: 305 × 15
@@ -1482,9 +1586,12 @@ df_ze_lepen</code></pre></div>
 <div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># on sauvegarde le résultat en CSV</span>
 <span class="kw">write_excel_csv</span>(df_ze_lepen, <span class="dt">path =</span> <span class="st">&quot;./resultats_ze.csv&quot;</span>, <span class="dt">na =</span> <span class="st">&quot;&quot;</span>)</code></pre></div>
 <p>À partir de là, on peut commencer à visualiser nos données (teaser de la deuxième partie de cette formation !)</p>
-<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co"># Visualiser des données (teaser)</span>
-df_large %&gt;%<span class="st"> </span><span class="kw">mutate</span>(<span class="dt">Abstention_ins =</span> (Inscrits -<span class="st"> </span>Votants)/Inscrits *<span class="st"> </span><span class="dv">100</span>) %&gt;%<span class="st"> </span>
-<span class="st">    </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Abstention_ins)) +<span class="st"> </span><span class="kw">geom_histogram</span>() +<span class="st"> </span><span class="kw">theme_gray</span>()</code></pre></div>
+<div class="sourceCode"><pre class="sourceCode r"><code class="sourceCode r"><span class="co">#Visualiser des données (teaser) </span>
+df_large %&gt;%
+<span class="st">  </span><span class="kw">mutate</span>(<span class="dt">Abstention_ins =</span> (Inscrits-Votants) /<span class="st"> </span>Inscrits *<span class="st"> </span><span class="dv">100</span>) %&gt;%
+<span class="st">  </span><span class="kw">ggplot</span>(<span class="kw">aes</span>(<span class="dt">x =</span> Abstention_ins)) +<span class="st"> </span>
+<span class="st">  </span><span class="kw">geom_histogram</span>() +
+<span class="st">  </span><span class="kw">theme_gray</span>()</code></pre></div>
 <pre><code>`stat_bin()` using `bins = 30`. Pick better value with `binwidth`.</code></pre>
 <p><img src="index_files/figure-html/unnamed-chunk-29-1.png" width="768" /></p>
 <div id="acceder-a-la-deuxieme-partie-de-cette-formation-utiliser-r-pour-lanalyse-et-la-visualisation-de-donnees" class="section level3">
