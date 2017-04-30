@@ -661,7 +661,7 @@ Sauvegarder permet de garder les données qui sont en mémoire .
 
 À la fermeture de la session, R par défaut propose d'enregistrer les objets en mémoire. Mauvaise pratique car ne met pas à jour les données et ne permet pas de retrouver les données. 
 
-Fonction : `save(nom_du_jeu_de_données,  fichier = "./nom_du_jeu_de_données.Rdata")`
+Fonction : `save(nom_du_jeu_de_données,  file = "./nom_du_jeu_de_données.Rdata")`
 
 Le 2è argument est le chemin où on veut sauvegarder le jeu de données.
 
