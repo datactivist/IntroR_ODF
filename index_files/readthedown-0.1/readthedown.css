@@ -93,10 +93,18 @@ img.image-lb {
     font-size: 90%;
 }
 
-img.mfp-img {
-  background-color: #FFFFFF;
-  padding: 0px;
-  margin: 40px 0px;
+
+/* Data tables */
+
+.datatables {
+  margin: 2em 0em;
+}
+
+.dataTables_length,
+.dataTables_filter,
+.dataTables_info,
+.dataTables_paginate {
+  font-size: 90%;
 }
 
 /* General styling */
@@ -183,6 +191,14 @@ p{
     font-size:16px;
     line-height:24px;
     margin:0px 0px 24px 0px;
+}
+
+#content ul {
+  font-size: 16px;
+}
+
+#content p {
+  margin-bottom: 16px;
 }
 
 b,strong{
@@ -447,9 +463,9 @@ code{
 
 
 #content pre {
-    background:#f3f6f6;
+    /* background:#f3f6f6; */
     border:1px solid #e1e4e5;
-    color:#404040;
+    /* color:#404040; */
     line-height: 1.5;
     margin-bottom:24px;
     overflow:auto;
@@ -460,8 +476,12 @@ code{
 }
 
 #content pre.sourceCode{
-    background-color: #FFF;
+    /* background-color: #FFF; */
     margin:1px 0px 12px 0px;
+}
+
+#content div.sourceCode {
+  background: #fcfcfc;
 }
 
 .table-wrapper {
@@ -485,7 +505,6 @@ table td,table th{
     margin:0;
     overflow:visible;
     padding:8px 16px;
-    background-color:white;
     border:1px solid #e1e4e5;
 }
 
@@ -501,11 +520,11 @@ table caption{
     padding:1em 0;
 }
 
-table tr:nth-child(2n-1) td{
+table tr:nth-child(2n-1) {
     background-color:#f3f6f6;
 }
 
-table tr:nth-child(2n) td{
+table tr:nth-child(2n) {
     background-color:white;
 }
 

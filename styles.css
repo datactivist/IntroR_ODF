@@ -11,6 +11,15 @@
   border-top-color: #282828;
 }
 
+div#postamble:before {
+  content:url(./img/logo.png);
+  float:left;
+}
+
+div#postable img {
+  width:100%;
+  object-fit: contain;
+}
 
 h1, h2, h3, h4, h5, h6, legend {
   color: #E5555C;

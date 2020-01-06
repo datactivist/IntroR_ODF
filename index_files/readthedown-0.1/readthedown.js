@@ -1,5 +1,16 @@
 $( document ).ready(function() {
 
+    // Fix for dots in level 1 and level 2 titles
+    $('body .section.level1').each(function () {
+      $(this).attr("id", $(this).attr("id").replace(/\./g, "-"));
+    });
+    $('body .section.level2').each(function () {
+      $(this).attr("id", $(this).attr("id").replace(/\./g, "-"));
+    });
+    $('#table-of-contents ul li a').each(function () {
+      $(this).attr("href", $(this).attr("href").replace(/\./g, "-"));
+    });
+
     // Shift nav in mobile when clicking the menu.
     $(document).on('click', "[data-toggle='wy-nav-top']", function() {
       $("[data-toggle='wy-nav-shift']").toggleClass("shift");
@@ -15,14 +26,6 @@ $( document ).ready(function() {
 
     // Make tables responsive
     $("#main table").wrap("<div class='table-wrapper'></div>");
-    /* Pilltabs */
-    /* Automatically add active class to first elements */
-    $(".nav-pilltabs").each(function() {
-      $(this).find("li").first().addClass("active")
-    })
-    $(".tab-content").each(function() {
-      $(this).find(".tab-pane").first().addClass("active")
-    })
 
     // ScrollSpy also requires that we use a Bootstrap nav component.
     $('#text-table-of-contents ul').first().addClass('nav');
